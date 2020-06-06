@@ -8,31 +8,31 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
-import com.moon.BEAN.OrganizacaoBean;
+import com.moon.BEAN.EquipeBean;
 import com.moon.DAO.ConnectionFactory;
 
-public class OrganizacaoDAO {
+public class EquipeDAO {
 	
 	private Connection conn;
 	private PreparedStatement ps;
 	private Statement st;
 	private ResultSet rs;
 
-	public OrganizacaoDAO() {
+	public EquipeDAO() {
 		conn = new ConnectionFactory().getConnection();
 	}
 
 	
-	public void cadastrarOrganizacao(OrganizacaoBean organizacaoBean) {
+	public void cadastrarEquipe(EquipeBean equipeBean) {
 		
-		String sql = "INSERT INTO organizacao (nome,usuario, senha) values (?,?,?)";
+		String sql = "INSERT INTO equipe (nome,usuario, senha) values (?,?,?)";
 
 		try {
 			
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, organizacaoBean.getNome());
-			ps.setString(2, organizacaoBean.getUsuario());
-			ps.setString(3, organizacaoBean.getSenha());
+			ps.setString(1, equipeBean.getNome());
+			ps.setString(2, equipeBean.getUsuario());
+			ps.setString(3, equipeBean.getSenha());
 			ps.execute();
 			ps.close();
 			
@@ -43,18 +43,18 @@ public class OrganizacaoDAO {
 		}
 	}
 	
-	public ArrayList<OrganizacaoBean> buscarOrganizacoes() {
+	public ArrayList<EquipeBean> buscarEquipes() {
 		
-		String sql = "SELECT * FROM organizacao";
-		ArrayList<OrganizacaoBean> lista = new ArrayList<OrganizacaoBean>();
+		String sql = "SELECT * FROM equipe";
+		ArrayList<EquipeBean> lista = new ArrayList<EquipeBean>();
 		
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			
 			while(rs.next()) {
-				OrganizacaoBean organizacao = new OrganizacaoBean(rs.getString("nome"), rs.getInt("id"), rs.getString("usuario"), rs.getString("Senha"));
-				lista.add(organizacao);
+				EquipeBean equipe = new EquipeBean(rs.getString("nome"), rs.getInt("id"), rs.getString("usuario"), rs.getString("Senha"));
+				lista.add(equipe);
 			}
 			
 		} catch (Exception e) {

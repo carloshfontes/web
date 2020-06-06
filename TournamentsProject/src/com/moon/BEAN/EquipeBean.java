@@ -1,13 +1,13 @@
 package com.moon.BEAN;
 
-public class OrganizacaoBean {
+public class EquipeBean {
 	
 	private String nome;
 	private int id;
 	private String usuario;
 	private String senha;
 	
-	public OrganizacaoBean(String nome, int id, String usuario, String senha) {
+	public EquipeBean(String nome, int id, String usuario, String senha) {
 		super();
 		this.setNome(nome);
 		this.setId(id);

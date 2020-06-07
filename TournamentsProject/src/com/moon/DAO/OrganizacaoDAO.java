@@ -23,10 +23,8 @@ public class OrganizacaoDAO {
 
 	
 	public void cadastrarOrganizacao(OrganizacaoBean organizacaoBean) {
-		System.out.println("Preguiçaaa");
-		
 		String sql = "INSERT INTO organizacao (nome,usuario, senha) values (?,?,?)";
-		System.out.println("Preguiçaaa2");
+
 
 		try {
 			

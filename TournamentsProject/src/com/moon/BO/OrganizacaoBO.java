@@ -1,5 +1,7 @@
 package com.moon.BO;
 
+import java.util.ArrayList;
+
 import com.moon.BEAN.OrganizacaoBean;
 import com.moon.DAO.OrganizacaoDAO;
 
@@ -11,10 +13,13 @@ public class OrganizacaoBO {
 		this.organizacaoDAO =  new OrganizacaoDAO();
 	}
 	
-	
 	public void cadastrarOrganizacao(String nome, String usuario, String senha) {
 		OrganizacaoBean organizacaoBean = new OrganizacaoBean(nome, 1, usuario, senha);
 		organizacaoDAO.cadastrarOrganizacao(organizacaoBean);
+	}
+	
+	public ArrayList<OrganizacaoBean> listarOrganizacoes(){
+		return organizacaoDAO.buscarOrganizacoes();
 	}
 
 }

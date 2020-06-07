@@ -3,61 +3,60 @@ package com.moon.DAO;
 import java.util.ArrayList;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
-import com.moon.BEAN.EquipeBean;
+import com.moon.BEAN.RodadaBean;
 import com.moon.DAO.ConnectionFactory;
 
-public class EquipeDAO {
+public class RodadaDAO {
 	
 	private Connection conn;
 	private PreparedStatement ps;
 	private Statement st;
 	private ResultSet rs;
 
-	public EquipeDAO() {
+	public RodadaDAO() {
 		conn = new ConnectionFactory().getConnection();
 	}
 
 	
-	public void cadastrarEquipe(EquipeBean equipeBean) {
+	public void cadastrarRodada(RodadaBean rodadaBean) {
 		
-		String sql = "INSERT INTO equipe (nome, usuario, senha) values (?,?,?)";
+		String sql = "INSERT INTO rodada (numero, data) values (?,?)";
 
 		try {
 			
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, equipeBean.getNome());
-			ps.setString(2, equipeBean.getUsuario());
-			ps.setString(3, equipeBean.getSenha());
+			ps.setInt(1, rodadaBean.getNumero());
+			ps.setDate(2, (Date) rodadaBean.getData());
 			ps.execute();
 			ps.close();
 			
 			
 		}catch (Exception error) {
 			System.out.println("false: "+error);
-			
 		}
 	}
 	
-	public ArrayList<EquipeBean> buscarEquipes() {
+	public ArrayList<RodadaBean> buscarRodadas() {
 		
-		String sql = "SELECT * FROM equipe";
-		ArrayList<EquipeBean> lista = new ArrayList<EquipeBean>();
+		String sql = "SELECT * FROM rodada";
+		ArrayList<RodadaBean> lista = new ArrayList<RodadaBean>();
 		
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			
 			while(rs.next()) {
-				EquipeBean equipe = new EquipeBean(rs.getString("nome"), rs.getInt("id"), rs.getString("usuario"), rs.getString("Senha"));
-				lista.add(equipe);
+				RodadaBean rodada = new RodadaBean(rs.getInt("numero"), rs.getInt("id"), rs.getDate("data"));
+				lista.add(rodada);
 			}
 			
 		} catch (Exception e) {
-			throw new RuntimeException("Erro na busca de Equipes: " + e);
+			throw new RuntimeException("Erro na busca de rodadas: " + e);
 		}
 		
 		return lista;

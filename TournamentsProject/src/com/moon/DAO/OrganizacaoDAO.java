@@ -2,7 +2,6 @@ package com.moon.DAO;
 
 import java.util.ArrayList;
 
-import br.com.bean.ProductBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -25,7 +24,7 @@ public class OrganizacaoDAO {
 	
 	public void cadastrarOrganizacao(OrganizacaoBean organizacaoBean) {
 		
-		String sql = "INSERT INTO organizacao (nome,usuario, senha) values (?,?,?)";
+		String sql = "INSERT INTO organizacao (nome, usuario, senha) values (?,?,?)";
 
 		try {
 			
@@ -58,7 +57,7 @@ public class OrganizacaoDAO {
 			}
 			
 		} catch (Exception e) {
-			throw new RuntimeException("Erro na busca de veiculos: " + e);
+			throw new RuntimeException("Erro na busca de organizacoes: " + e);
 		}
 		
 		return lista;

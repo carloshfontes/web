@@ -63,4 +63,24 @@ public class OrganizacaoDAO {
 		
 		return lista;
 	}
+	
+	public int buscaoOrganizacao(String usuario, String senha) {
+		String sql = "SELECT * FROM organizacao WHERE usuario='"+usuario+"' and senha='"+senha+"'";
+
+		
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+
+			if(rs.next()) {
+				System.out.println("usuario: "+rs.getString("usuario"));
+				System.out.println("Senha: "+rs.getString("senha"));
+				return rs.getInt("id");
+			}
+			 
+		}catch (Exception error) {
+			return 0;
+		}
+		return 0;
+	}
 }

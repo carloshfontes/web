@@ -14,8 +14,8 @@ public class CampeonatoBO {
 		this.campeonatoDAO =  new CampeonatoDAO();
 	}
 	
-	public void cadastrarCampeonato(String nome, String jogo, String descricao, Date data, int max_equipes) {
-		CampeonatoBean campeonatoBean = new CampeonatoBean(nome, 1, jogo, descricao, data, max_equipes);
+	public void cadastrarCampeonato(String nome, String jogo, String descricao, Date data, int max_equipes, int idOrganizacao) {
+		CampeonatoBean campeonatoBean = new CampeonatoBean(nome, 1, jogo, descricao, data, max_equipes, idOrganizacao);
 		campeonatoDAO.cadastrarCampeonato(campeonatoBean);
 	}
 	

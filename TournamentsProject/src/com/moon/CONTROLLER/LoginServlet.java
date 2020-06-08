@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.moon.BO.OrganizacaoBO;
 
@@ -22,11 +23,18 @@ public class LoginServlet extends HttpServlet {
 		String usuario = request.getParameter("usuario");
 		String senha = request.getParameter("senha");
 		String tipo = request.getParameter("tipo");
-		System.out.println(tipo);
-		
+
 		switch (tipo) {
 		case "Organizacao":
-			System.out.println("testeee");
+			OrganizacaoBO organizacaoBO = new OrganizacaoBO();
+			int resultadoBusca = organizacaoBO.buscarOrganiacao(usuario, senha);
+			System.out.println(resultadoBusca);
+			if( resultadoBusca != 0) {
+				HttpSession session = request.getSession();
+				session.setAttribute("organizacao", resultadoBusca);
+				System.out.println("aqqq");
+
+			}
 			break;
 			
 		case "Equipe":
@@ -36,6 +44,8 @@ public class LoginServlet extends HttpServlet {
 		default:
 			break;
 		}
+		
+		request.getRequestDispatcher("dashboardOrganizacao.jsp").forward(request, response);
 	}
 
 }

@@ -2,11 +2,11 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="com.moon.BEAN.CampeonatoBean" %>
-<%@ page import="com.moon.BO.CampeonatoBO" %>
+<%@ page import="com.moon.BEAN.CampeonatoBean"%>
+<%@ page import="com.moon.BO.CampeonatoBO"%>
 <%@page import="java.util.ArrayList"%>
 
-    
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +38,7 @@
 		</div>
 
 	</nav>
-<%
+	<%
 CampeonatoBO campeonatoBO = new CampeonatoBO();
 ArrayList<CampeonatoBean> campeonatos = new ArrayList<CampeonatoBean>();
 campeonatos = campeonatoBO.listarCampeonatos();
@@ -48,36 +48,37 @@ campeonatos = campeonatoBO.listarCampeonatos();
 
 	<div class="container">
 		<div class="row">
-		<div class="col-12">
-			<div class="row">
-				 <% for(int i = 0; i < campeonatos.size(); i++) { %>
-				<div class="col-12 col-md-4 mb-3">
-					<div class="card card-body">
-						<div class="row mt-2">
-							<div class="col-12">
-								<h3 class="text-dark"><%=campeonatos.get(i).getNome()%></h3>
+			<div class="col-12">
+				<div class="row">
+					<% for(int i = 0; i < campeonatos.size(); i++) { %>
+					<div class="col-12 col-md-4 mb-3">
+						<a href="/TournamentsProject/CampeonatoPaginaServlet?id=<%=campeonatos.get(i).getId()%>">
+							<div class="card card-body cor3">
+								<div class="row mt-2">
+									<div class="col-12">
+										<h3 class="text-dark"><%=campeonatos.get(i).getNome()%></h3>
+									</div>
+								</div>
+
+								<div class="row mt-2">
+									<div class="col-12">
+										<h3 class="text-dark"><%=campeonatos.get(i).getJogo()%></h3>
+									</div>
+								</div>
+
+								<div class="row mt-2">
+									<div class="col-12">
+										<h3 class="text-dark"><%=campeonatos.get(i).getMax_equipes()%></h3>
+									</div>
+								</div>
+
 							</div>
-						</div>
-						
-						<div class="row mt-2">
-							<div class="col-12">
-								<h3 class="text-dark"><%=campeonatos.get(i).getJogo()%></h3>
-							</div>
-						</div>
-						
-						<div class="row mt-2">
-							<div class="col-12">
-								<h3 class="text-dark"><%=campeonatos.get(i).getMax_equipes()%></h3>
-							</div>
-						</div>
-						
-						
+						</a>
 					</div>
+					<% } %>
 				</div>
-				<% } %>
 			</div>
 		</div>
-	</div>
 	</div>
 
 

@@ -24,11 +24,11 @@ public class CampeonatoBO {
 		return campeonatoDAO.buscarCampeonatos();
 	}
 	
-	public int buscarCampeonato(int id) {
-		return this.campeonatoDAO.buscaoCampeonatos(id);
-	}
-	
 	public void adicionarEquipe(EquipeBean equipe, CampeonatoBean campeonato) {
 		adicionarEquipe(equipe, campeonato);
 	}
+
+	public CampeonatoBean buscarCampeonato(int id) {
+        return this.campeonatoDAO.buscaoCampeonatos(id);
+    }
 }

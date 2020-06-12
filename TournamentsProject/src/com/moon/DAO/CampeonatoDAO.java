@@ -69,24 +69,6 @@ public class CampeonatoDAO {
 		return lista;
 	}
 	
-	public int buscaoCampeonatos(int id) {
-		String sql = "SELECT * FROM campeonato WHERE id='"+id+"'";
-
-		
-		try {
-			st = conn.createStatement();
-			rs = st.executeQuery(sql);
-
-			if(rs.next()) {
-				return rs.getInt("id");
-			}
-			 
-		}catch (Exception error) {
-			return 0;
-		}
-		return 0;
-	}
-	
 	public void adicionarEquipe(EquipeBean equipe, CampeonatoBean campeonato) {
 
 		String sql = "INSERT INTO campeonato_equipe (id_equipe, id_campeonato) values (?,?)";
@@ -104,4 +86,22 @@ public class CampeonatoDAO {
 			System.out.println("false: "+error);
 		}
 	}
+
+	public CampeonatoBean buscaoCampeonatos(int id) {
+        String sql = "SELECT * FROM campeonato WHERE id='"+id+"'";
+
+
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+
+            if(rs.next()) {
+            	return new CampeonatoBean(rs.getString("nome"), rs.getInt("id"), rs.getString("jogo"), rs.getString("descricao"), rs.getDate("data"), rs.getInt("max_equipes"));
+            }
+
+        }catch (Exception error) {
+            return null;
+        }
+        return null;
+    }
 }

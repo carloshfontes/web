@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
 import com.moon.BEAN.CampeonatoBean;
+import com.moon.BEAN.EquipeBean;
+import com.moon.BEAN.CampeonatoBean;
 import com.moon.DAO.ConnectionFactory;
 
 public class CampeonatoDAO {
@@ -25,7 +27,7 @@ public class CampeonatoDAO {
 	
 	public void cadastrarCampeonato(CampeonatoBean campeonatoBean) {
 		
-		String sql = "INSERT INTO campeonato (nome, jogo, descricao, data, max_equipes, id_organizacao) values (?,?,?,?,?, ?)";
+		String sql = "INSERT INTO campeonato (nome, jogo, descricao, data, max_equipes, id_organizacao) values (?,?,?,?,?,?)";
 
 		try {
 			
@@ -65,5 +67,41 @@ public class CampeonatoDAO {
 		}
 		
 		return lista;
+	}
+	
+	public int buscaoCampeonatos(int id) {
+		String sql = "SELECT * FROM campeonato WHERE id='"+id+"'";
+
+		
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+
+			if(rs.next()) {
+				return rs.getInt("id");
+			}
+			 
+		}catch (Exception error) {
+			return 0;
+		}
+		return 0;
+	}
+	
+	public void adicionarEquipe(EquipeBean equipe, CampeonatoBean campeonato) {
+
+		String sql = "INSERT INTO campeonato_equipe (id_equipe, id_campeonato) values (?,?)";
+
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, equipe.getId());
+			ps.setInt(2, campeonato.getId());
+
+			ps.execute();
+			ps.close();
+			
+		}catch (Exception error) {
+			System.out.println("false: "+error);
+		}
 	}
 }

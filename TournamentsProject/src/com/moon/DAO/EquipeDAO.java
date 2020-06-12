@@ -7,8 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
+import com.moon.BEAN.CampeonatoBean;
 import com.moon.BEAN.EquipeBean;
 import com.moon.DAO.ConnectionFactory;
+
+import jdk.nashorn.internal.runtime.ListAdapter;
 
 public class EquipeDAO {
 	
@@ -61,5 +64,44 @@ public class EquipeDAO {
 		}
 		
 		return lista;
+	}
+	
+	public int buscaoEquipes(String usuario, String senha) {
+		String sql = "SELECT * FROM equipe WHERE usuario='"+usuario+"' and senha='"+senha+"'";
+
+		
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+
+			if(rs.next()) {
+				System.out.println("usuario: "+rs.getString("usuario"));
+				System.out.println("Senha: "+rs.getString("senha"));
+				return rs.getInt("id");
+			}
+			 
+		}catch (Exception error) {
+			return 0;
+		}
+		return 0;
+	}
+	
+	public ArrayList<Integer> buscarCampeonatos(EquipeBean equipe) {
+		
+		ArrayList<Integer> campeonatos = new ArrayList<Integer>();
+				
+		String sql = "SELECT * FROM campeonato_equipe WHERE id_equipe='"+equipe.getId()+"'";
+		
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+
+			if(rs.next()) {
+				campeonatos.add(rs.getInt("id_campeonato"));
+			}
+			return campeonatos;
+		}catch (Exception error) {
+			return campeonatos;
+		}
 	}
 }

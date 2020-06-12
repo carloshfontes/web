@@ -3,8 +3,9 @@ package com.moon.BO;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.moon.BEAN.CampeonatoBean;
 import com.moon.DAO.CampeonatoDAO;
+import com.moon.BEAN.EquipeBean;
+import com.moon.BEAN.CampeonatoBean;
 
 public class CampeonatoBO {
 	
@@ -22,5 +23,12 @@ public class CampeonatoBO {
 	public ArrayList<CampeonatoBean> listarCampeonatos(){
 		return campeonatoDAO.buscarCampeonatos();
 	}
-
+	
+	public int buscarCampeonato(int id) {
+		return this.campeonatoDAO.buscaoCampeonatos(id);
+	}
+	
+	public void adicionarEquipe(EquipeBean equipe, CampeonatoBean campeonato) {
+		adicionarEquipe(equipe, campeonato);
+	}
 }

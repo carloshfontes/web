@@ -22,5 +22,8 @@ public class CampeonatoBO {
 	public ArrayList<CampeonatoBean> listarCampeonatos(){
 		return campeonatoDAO.buscarCampeonatos();
 	}
-
+	public CampeonatoBean buscarCampeonato(int id) {
+        return this.campeonatoDAO.buscaoCampeonatos(id);
+    }
+	
 }

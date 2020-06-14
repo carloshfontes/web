@@ -3,7 +3,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="com.moon.BEAN.CampeonatoBean"%>
-<%@ page import="com.moon.BO.CampeonatoBO"%>
+<%@ page import="com.moon.BO.EquipeBO"%>
 <%@ page import="com.moon.BEAN.EquipeBean"%>
 <%@page import="java.util.ArrayList"%>
 
@@ -19,11 +19,23 @@
 </head>
 <body class>
 
-<% 
-HttpSession s = request.getSession();
-EquipeBean equipe = (EquipeBean) s.getAttribute("equipe");
-%>
-<h1><%=equipe.getNome()%></h1>
+	<%
+		HttpSession s = request.getSession();
+	EquipeBean equipe = (EquipeBean) s.getAttribute("equipe");
+	EquipeBO equipeBO = new EquipeBO();
+	ArrayList<CampeonatoBean> campeonatos = equipeBO.buscarCampeonatos(equipe);
+	%>
+	<h1><%=equipe.getNome()%></h1>
+
+	<div class="container">
+		<% for(int i = 0; i < campeonatos.size(); i++) { %>
+		<div class="row">
+			<div class="col-12 bg-white">
+				<h6><%=campeonatos.get(i).getNome() %></h6>
+			</div>
+		</div>
+		<% } %>
+	</div>
 
 
 </body>

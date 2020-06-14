@@ -35,4 +35,8 @@ public class ConfrontoBO {
 	public ConfrontoBean buscarConfrontoRodada(CampeonatoBean campeonato, int rodada, int confronto) {
 		return confrontoDAO.buscarConfrontoRodada(campeonato, rodada, confronto);
 	}
+	
+	public ArrayList<ConfrontoBean> buscarConfrontos(CampeonatoBean campeonato){
+		return confrontoDAO.buscaoConfrontos(campeonato);
+	}
 }

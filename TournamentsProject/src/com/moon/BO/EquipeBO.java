@@ -34,10 +34,10 @@ public class EquipeBO {
 		
 		ArrayList<Integer> idCampeonatos = equipeDAO.buscarCampeonatos(equipe);
 		ArrayList<CampeonatoBean> campeonatos = campeonatoDAO.buscarCampeonatos();
-		ArrayList<CampeonatoBean> lista = campeonatoDAO.buscarCampeonatos();
+		ArrayList<CampeonatoBean> lista = new ArrayList<CampeonatoBean>();
 		
-		for(int i=0; i>idCampeonatos.size(); i++) {
-			for(int j=0; j>campeonatos.size(); j++) {
+		for(int i=0; i < idCampeonatos.size(); i++) {
+			for(int j=0; j < campeonatos.size(); j++) {
 				if(idCampeonatos.get(i) == campeonatos.get(j).getId()) {
 					lista.add(campeonatos.get(j));
 				}

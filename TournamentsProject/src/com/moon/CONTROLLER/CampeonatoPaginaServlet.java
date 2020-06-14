@@ -1,6 +1,8 @@
 package com.moon.CONTROLLER;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.moon.BEAN.CampeonatoBean;
+import com.moon.BEAN.ConfrontoBean;
 import com.moon.BO.CampeonatoBO;
+import com.moon.BO.ConfrontoBO;
 
 @WebServlet("/CampeonatoPaginaServlet")
 public class CampeonatoPaginaServlet extends HttpServlet {
@@ -28,10 +32,14 @@ public class CampeonatoPaginaServlet extends HttpServlet {
 		if (campeonatoBean != null) {
 			redirect = "campeonato.jsp";
 			request.setAttribute("campeonato", campeonatoBean);
+			ConfrontoBO confrontoBO = new ConfrontoBO();			
+
+			request.setAttribute("confrontos", confrontoBO.buscarConfrontos(campeonatoBean));
+			
+			
 		}
 
 		request.getRequestDispatcher(redirect).forward(request, response);
-//		System.out.println(request.getParameter("id"));
 	}
 
 }

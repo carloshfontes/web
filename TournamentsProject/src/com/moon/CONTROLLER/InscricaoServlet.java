@@ -31,6 +31,8 @@ public class InscricaoServlet extends HttpServlet {
 		CampeonatoBO campeonatoBO = new CampeonatoBO();
 		campeonatoBO.adicionarEquipe(equipeBean, campeonatoBean);
 		
+//		response.sendRedirect();
+		
 	}
 	
 }

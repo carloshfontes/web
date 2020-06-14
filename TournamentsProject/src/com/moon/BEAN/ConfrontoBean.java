@@ -43,6 +43,18 @@ public class ConfrontoBean {
 		this.setId_campeonato(id_campeonato);
 	}
 	
+	public ConfrontoBean(int id) {
+		super();
+		this.setId(id);
+	}
+	
+	public ConfrontoBean(int id, int rodada, int numeroConfronto) {
+		super();
+		this.setId(id);
+		this.setId_rodada(rodada);
+		this.setNumero_confronto(numeroConfronto);
+	}
+	
 	public int getNumero_confronto() {
 		return numero_confronto;
 	}

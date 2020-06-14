@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="com.moon.BEAN.CampeonatoBean"%>
 <%@ page import="com.moon.BO.CampeonatoBO"%>
+<%@ page import="com.moon.BO.EquipeBO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page import="com.moon.BEAN.EquipeBean"%>
 
@@ -111,13 +112,13 @@
 						<div class="card rounded p-3 bg-light">
 							<div class="row">
 								<div class="col-12">
-									<h6>${confronto.getId_equipe1()}</h6>
+									${confronto.getEquipe1()}
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="col-12">
-									<h6>${confronto.getId_equipe2()}</h6>
+								${confronto.getEquipe2()}
 								</div>
 							</div>
 
@@ -156,13 +157,11 @@
 						<div class="card rounded p-3 bg-light">
 							<div class="row">
 								<div class="col-12">
-									<h6>${confronto.getId_equipe1()}</h6>
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="col-12">
-									<h6>${confronto.getId_equipe2()}</h6>
 								</div>
 							</div>
 

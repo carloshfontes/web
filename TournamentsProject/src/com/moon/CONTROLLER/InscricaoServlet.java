@@ -23,14 +23,15 @@ public class InscricaoServlet extends HttpServlet {
 		System.out.println(request.getParameter("campeonato"));
 		int idCampeonato = Integer.parseInt(request.getParameter("campeonato"));
 		int idEquipe = Integer.parseInt(request.getParameter("equipe"));
-		
-		System.out.println("c: "+idCampeonato+" e: "+idEquipe);
+
 		CampeonatoBean campeonatoBean = new CampeonatoBean(idCampeonato);
 		EquipeBean equipeBean = new EquipeBean(idEquipe);
 		
 		CampeonatoBO campeonatoBO = new CampeonatoBO();
 		campeonatoBO.adicionarEquipe(equipeBean, campeonatoBean);
 		
+		response.sendRedirect("http://localhost:8080/TournamentsProject/CampeonatoPaginaServlet?id="+idCampeonato);
+
 //		response.sendRedirect();
 		
 	}

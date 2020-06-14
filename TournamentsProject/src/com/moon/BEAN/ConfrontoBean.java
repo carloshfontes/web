@@ -2,6 +2,8 @@ package com.moon.BEAN;
 
 import java.util.Date;
 
+import com.moon.BO.EquipeBO;
+
 public class ConfrontoBean {
 	
 	private int numero_confronto;
@@ -11,6 +13,8 @@ public class ConfrontoBean {
 	private int id_equipe2;
 	private int id_campeao;
 	private int id_campeonato;
+	private String equipe1;
+	private String equipe2;
 	
 	
 	public ConfrontoBean(int numero_confronto, int id, int id_rodada, int id_equipe1, int id_equipe2, int id_campeao, int id_campeonato) {
@@ -22,6 +26,19 @@ public class ConfrontoBean {
 		this.setId_equipe2(id_equipe2);
 		this.setId_campeao(id_campeao);
 		this.setId_campeonato(id_campeonato);
+	}
+	
+	public ConfrontoBean(int numero_confronto, int id, int id_rodada, int id_equipe1, int id_equipe2, int id_campeao, int id_campeonato, String equipe1, String equipe2) {
+		super();
+		this.setNumero_confronto(numero_confronto);
+		this.setId(id);
+		this.setId_rodada(id_rodada);
+		this.setId_equipe1(id_equipe1);
+		this.setId_equipe2(id_equipe2);
+		this.setId_campeao(id_campeao);
+		this.setId_campeonato(id_campeonato);
+		this.setEquipe1(equipe1);
+		this.setEquipe2(equipe2);
 	}
 	
 	public ConfrontoBean(int numero_confronto, int id, int id_rodada, int id_equipe1, int id_campeao, int id_campeonato) {
@@ -55,6 +72,22 @@ public class ConfrontoBean {
 		this.setNumero_confronto(numeroConfronto);
 	}
 	
+	public String getEquipe1() {
+		return equipe1;
+	}
+
+	public void setEquipe1(String equipe1) {
+		this.equipe1 = equipe1;
+	}
+
+	public String getEquipe2() {
+		return equipe2;
+	}
+
+	public void setEquipe2(String equipe2) {
+		this.equipe2 = equipe2;
+	}
+
 	public int getNumero_confronto() {
 		return numero_confronto;
 	}
@@ -97,6 +130,7 @@ public class ConfrontoBean {
 	public void setId_campeonato(int id_campeonato) {
 		this.id_campeonato = id_campeonato;
 	}
+
 
 	
 }

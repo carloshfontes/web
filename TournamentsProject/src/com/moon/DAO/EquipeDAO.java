@@ -75,8 +75,7 @@ public class EquipeDAO {
 			rs = st.executeQuery(sql);
 
 			if(rs.next()) {
-				System.out.println("usuario: "+rs.getString("usuario"));
-				System.out.println("Senha: "+rs.getString("senha"));
+
 				EquipeBean equipeBean = new EquipeBean(rs.getString("nome"), rs.getInt("id"), rs.getString("usuario"), rs.getString("senha"));
 				return equipeBean;
 			}
@@ -93,13 +92,15 @@ public class EquipeDAO {
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
-
-			EquipeBean equipeBean = new EquipeBean(rs.getString("nome"), rs.getInt("id"), rs.getString("usuario"), rs.getString("senha"));
-			return equipeBean;
+			if(rs.next()) {
+				EquipeBean equipeBean = new EquipeBean(rs.getString("nome"), rs.getInt("id"), rs.getString("usuario"), rs.getString("senha"));
+				return equipeBean;	
+			}
 			 
 		}catch (Exception error) {
 			return null;
 		}
+		return null;
 	}
 	
 	public ArrayList<Integer> buscarCampeonatos(EquipeBean equipe) {

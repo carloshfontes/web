@@ -39,11 +39,5 @@ public class PassarRodadaServlet extends HttpServlet {
 		
 	}
 
-//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		int idCampeao = Integer.parseInt(request.getParameter("campeao"));
-//		int idRodada = Integer.parseInt(request.getParameter("rodada"));
-//		int idConfronto = Integer.parseInt(request.getParameter("confronto"));
-//		
-//	}
 
 }

@@ -91,7 +91,7 @@ public class CampeonatoDAO {
 	}
 
 	public CampeonatoBean buscaoCampeonatos(int id) {
-        String sql = "SELECT * FROM campeonato WHERE id='"+id+"'";
+        String sql = "SELECT * FROM campeonato WHERE id="+id;
 
 
         try {

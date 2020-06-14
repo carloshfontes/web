@@ -104,7 +104,7 @@ public class ConfrontoDAO {
 	
 	public ConfrontoBean buscarConfrontoRodada(CampeonatoBean campeonato, int rodada, int confronto) {
 		
-		String sql = "SELECT * FROM confronto WHERE id_campeonato="+campeonato.getId()+" and id_rodada ="+rodada+" and numero_confronto = "+confronto;
+		String sql = "SELECT * FROM confornto WHERE id_campeonato="+campeonato.getId()+" and id_rodada ="+rodada+" and numero_confronto = "+confronto;
 		ConfrontoBean confrontoBean = null;
 		
 		try {
@@ -122,7 +122,7 @@ public class ConfrontoDAO {
 	
 	private void adicionarEquipeConfronto(ConfrontoBean confronto, EquipeBean equipe) {
 		
-		String sql = "UPDATE confronto SET id_equipe2 = '"+equipe.getId()+"' WHERE id = '"+confronto.getId()+"'";
+		String sql = "UPDATE confronto SET id_equipe2 = "+equipe.getId()+" WHERE id = "+confronto.getId();
 
 		try {
 			ps = conn.prepareStatement(sql);

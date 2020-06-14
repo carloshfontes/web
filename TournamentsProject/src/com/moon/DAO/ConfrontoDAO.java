@@ -89,6 +89,24 @@ public class ConfrontoDAO {
 		return lista;
 	}
 	
+	public ConfrontoBean buscarConfrontoRodada(CampeonatoBean campeonato, int rodada, int confronto) {
+		
+		String sql = "SELECT * FROM confornto WHERE id_campeonato='"+campeonato.getId()+"' and id_rodada ='"+rodada+"' and numero_confronto = '"+confronto+"'";
+		ConfrontoBean confrontoBean = null;
+		
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+
+			confrontoBean = new ConfrontoBean(rs.getInt("numero_confronto"), rs.getInt("id"), rs.getInt("id_rodada"), rs.getInt("id_equipe1"), rs.getInt("id_equipe2"), rs.getInt("id_campeao"), rs.getInt("id_campeonato"));
+			
+		} catch (Exception e) {
+			throw new RuntimeException("Erro na busca de confrontos: " + e);
+		}
+		
+		return confrontoBean;
+	}
+	
 	private void adicionarEquipeConfronto(ConfrontoBean confronto, EquipeBean equipe) {
 		
 		String sql = "UPDATE confronto SET id_equipe2 = '"+equipe.getId()+"' WHERE id = '"+confronto.getId()+"'";

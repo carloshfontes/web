@@ -70,7 +70,8 @@ public class CampeonatoDAO {
 	}
 	
 	public void adicionarEquipe(EquipeBean equipe, CampeonatoBean campeonato) {
-
+		
+		ConfrontoDAO confrontoDAO = new ConfrontoDAO();	
 		String sql = "INSERT INTO campeonato_equipe (id_equipe, id_campeonato) values (?,?)";
 
 		try {
@@ -81,6 +82,8 @@ public class CampeonatoDAO {
 
 			ps.execute();
 			ps.close();
+			
+			confrontoDAO.cadastraEquipeConfronto(campeonato, equipe);
 			
 		}catch (Exception error) {
 			System.out.println("false: "+error);

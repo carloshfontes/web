@@ -35,8 +35,7 @@ public class CampeonatoPaginaServlet extends HttpServlet {
 			ConfrontoBO confrontoBO = new ConfrontoBO();			
 
 			request.setAttribute("confrontos", confrontoBO.buscarConfrontos(campeonatoBean));
-			request.setAttribute("confrontosRodada2", confrontoBO.buscarConfrontos(campeonatoBean));
-
+			
 			
 		}
 

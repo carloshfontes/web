@@ -31,10 +31,8 @@
 	<%
 		HttpSession s = request.getSession();
 	EquipeBean equipe = (EquipeBean) s.getAttribute("equipe");
-	
-	
-	CampeonatoBean campeonatoBean = (CampeonatoBean) request.getAttribute("campeonato");
 
+	CampeonatoBean campeonatoBean = (CampeonatoBean) request.getAttribute("campeonato");
 	%>
 
 	<nav class="navbar">
@@ -59,6 +57,9 @@
 							<h1 class="text-light"><%=campeonatoBean.getNome()%></h1>
 						</div>
 
+						<%
+							if (equipe != null) {
+						%>
 						<div class="col-4">
 							<form method="POST" action="InscricaoServlet">
 								<div class="form-row d-none">
@@ -72,19 +73,22 @@
 								<div class="form-row d-none">
 									<div class="col-12">
 										<input type="text" class="form-control"
-											value="<%=equipe.getId()%>" name="equipe"
-											id="equipe">
+											value="<%=equipe.getId()%>" name="equipe" id="equipe">
 									</div>
 								</div>
 
 								<div class="form-row">
 									<div class="col-12">
-										<button type="submit" class="btn btn-primary">Me inscrever</button>
+										<button type="submit" class="btn btn-primary">Me
+											inscrever</button>
 									</div>
 								</div>
 							</form>
 
 						</div>
+						<%
+							}
+						%>
 					</div>
 				</div>
 			</div>
@@ -101,93 +105,38 @@
 		</div>
 
 		<div class="row mt-3">
-			<div class="col-3">
-				<div class="card rounded p-3 bg-light">
-					<div class="row">
-						<div class="col-12">
-							<h6>Pain Gamimg</h6>
-						</div>
-					</div>
+			<c:forEach var="confronto" items="${confrontos}">
+				<c:if test="${confronto.getId_rodada() == 1}">
+					<div class="col-3">
+						<div class="card rounded p-3 bg-light">
+							<div class="row">
+								<div class="col-12">
+									<h6>${confronto.getId_equipe1()}</h6>
+								</div>
+							</div>
 
-					<div class="row">
-						<div class="col-12">
-							<h6>INTZ eSports Club</h6>
-						</div>
-					</div>
+							<div class="row">
+								<div class="col-12">
+									<h6>${confronto.getId_equipe2()}</h6>
+								</div>
+							</div>
 
-					<div class="row">
-						<div class="col-12">
-							<button class="btn btn-primary btn-sm">Pontuar</button>
-						</div>
-					</div>
-				</div>
-			</div>
+							<div class="row">
+								<div class="col-6">
+									<a
+										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}"><button
+											class="btn btn-primary btn-sm">${confronto.getId_equipe1()}</button></a>
+								</div>
 
-			<div class="col-3">
-				<div class="card rounded p-3 bg-light">
-					<div class="row">
-						<div class="col-12">
-							<h6>Pain Gamimg</h6>
-						</div>
-					</div>
+								<div class="col-6">
+									<a><button class="btn btn-primary btn-sm">${confronto.getId_equipe2()}</button></a>
+								</div>
+							</div>
 
-					<div class="row">
-						<div class="col-12">
-							<h6>INTZ eSports Club</h6>
 						</div>
 					</div>
-
-					<div class="row">
-						<div class="col-12">
-							<button class="btn btn-primary btn-sm">Pontuar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-3">
-				<div class="card rounded p-3 bg-light">
-					<div class="row">
-						<div class="col-12">
-							<h6>Pain Gamimg</h6>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-12">
-							<h6>INTZ eSports Club</h6>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-12">
-							<button class="btn btn-primary btn-sm">Pontuar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-3">
-				<div class="card rounded p-3 bg-light">
-					<div class="row">
-						<div class="col-12">
-							<h6>Pain Gamimg</h6>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-12">
-							<h6>INTZ eSports Club</h6>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-12">
-							<button class="btn btn-primary btn-sm">Pontuar</button>
-						</div>
-					</div>
-				</div>
-			</div>
+				</c:if>
+			</c:forEach>
 		</div>
 	</div>
 
@@ -201,49 +150,38 @@
 		</div>
 
 		<div class="row mt-3">
-			<div class="col-3">
-				<div class="card rounded p-3 bg-light">
-					<div class="row">
-						<div class="col-12">
-							<h6>Pain Gamimg</h6>
-						</div>
-					</div>
+			<c:forEach var="confronto" items="${confrontos}">
+				<c:if test="${confronto.getId_rodada() == 2}">
+					<div class="col-3">
+						<div class="card rounded p-3 bg-light">
+							<div class="row">
+								<div class="col-12">
+									<h6>${confronto.getId_equipe1()}</h6>
+								</div>
+							</div>
 
-					<div class="row">
-						<div class="col-12">
-							<h6>INTZ eSports Club</h6>
-						</div>
-					</div>
+							<div class="row">
+								<div class="col-12">
+									<h6>${confronto.getId_equipe2()}</h6>
+								</div>
+							</div>
 
-					<div class="row">
-						<div class="col-12">
-							<button class="btn btn-primary btn-sm">Pontuar</button>
-						</div>
-					</div>
-				</div>
-			</div>
+							<div class="row">
+								<div class="col-6">
+									<a
+										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}"><button
+											class="btn btn-primary btn-sm">${confronto.getId_equipe1()}</button></a>
+								</div>
 
-			<div class="col-3">
-				<div class="card rounded p-3 bg-light">
-					<div class="row">
-						<div class="col-12">
-							<h6>Pain Gamimg</h6>
-						</div>
-					</div>
+								<div class="col-6">
+									<a><button class="btn btn-primary btn-sm">${confronto.getId_equipe2()}</button></a>
+								</div>
+							</div>
 
-					<div class="row">
-						<div class="col-12">
-							<h6>INTZ eSports Club</h6>
 						</div>
 					</div>
-
-					<div class="row">
-						<div class="col-12">
-							<button class="btn btn-primary btn-sm">Pontuar</button>
-						</div>
-					</div>
-				</div>
-			</div>
+				</c:if>
+			</c:forEach>
 		</div>
 	</div>
 
@@ -257,32 +195,62 @@
 		</div>
 
 		<div class="row mt-3">
-			<div class="col-3">
-				<div class="card rounded p-3 bg-light">
-					<div class="row">
-						<div class="col-12">
-							<h6>Pain Gamimg</h6>
+			<c:forEach var="confronto" items="${confrontos}">
+				<c:if test="${confronto.getId_rodada() == 3}">
+					<div class="col-3">
+						<div class="card rounded p-3 bg-light">
+							<div class="row">
+								<div class="col-12">
+									<h6>${confronto.getId_equipe1()}</h6>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-12">
+									<h6>${confronto.getId_equipe2()}</h6>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-6">
+									<a
+										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}"><button
+											class="btn btn-primary btn-sm">${confronto.getId_equipe1()}</button></a>
+								</div>
+
+								<div class="col-6">
+									<a><button class="btn btn-primary btn-sm">${confronto.getId_equipe2()}</button></a>
+								</div>
+							</div>
+
 						</div>
 					</div>
-
-					<div class="row">
-						<div class="col-12">
-							<h6>INTZ eSports Club</h6>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-12">
-							<button class="btn btn-primary btn-sm">Pontuar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
+				</c:if>
+			</c:forEach>
 		</div>
 	</div>
 
+
+	<!-- <script> 
+
+var ajax = new XMLHttpRequest();
+
+ajax.open("GET", "http://localhost:8080/TournamentsProject/PassarRodadaServlet?rodada=101name=Henry&lastname=Ford", true);
+
+//Envia a requisição
+ajax.send();
+
+//Cria um evento para receber o retorno.
+ajax.onreadystatechange = function() {
+// Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
+	if (ajax.readyState == 4 && ajax.status == 200) {
+		var data = ajax.responseText;
+ // Retorno do Ajax
+		console.log(data);
+	}
+}
+
+</script> -->
 </body>
 
 </html>

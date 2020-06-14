@@ -25,7 +25,7 @@ public class CampeonatoBO {
 	}
 	
 	public void adicionarEquipe(EquipeBean equipe, CampeonatoBean campeonato) {
-		adicionarEquipe(equipe, campeonato);
+		campeonatoDAO.adicionarEquipe(equipe, campeonato);
 	}
 
 	public CampeonatoBean buscarCampeonato(int id) {

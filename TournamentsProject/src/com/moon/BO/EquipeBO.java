@@ -24,7 +24,7 @@ public class EquipeBO {
 		return equipeDAO.buscarEquipes();
 	}
 	
-	public int buscarOrganiacao(String usuario, String senha) {
+	public int buscarEquipe(String usuario, String senha) {
 		
 		return this.equipeDAO.buscaoEquipes(usuario, senha);
 	}

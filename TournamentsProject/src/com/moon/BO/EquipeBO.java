@@ -46,4 +46,8 @@ public class EquipeBO {
 		
 		return lista;
 	}
+	
+	EquipeBean buscaoEquipeID(int id) {
+		return equipeDAO.buscaoEquipeID(id);
+	}
 }

@@ -38,10 +38,14 @@ public class ConfrontoDAO {
 			
 			if(confrontoBean.getId_equipe2() != 0) {
 				ps.setInt(4, confrontoBean.getId_equipe2());
+			}else {
+				ps.setNull(4, java.sql.Types.INTEGER);
 			}
 			
 			if(confrontoBean.getId_campeao() != 0) {
 				ps.setInt(5, confrontoBean.getId_campeao());
+			}else {
+				ps.setNull(5, java.sql.Types.INTEGER);
 			}
 	
 			ps.setInt(6, confrontoBean.getId_campeonato());

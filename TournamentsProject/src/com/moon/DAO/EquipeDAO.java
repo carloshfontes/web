@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 
 import com.moon.BEAN.CampeonatoBean;
 import com.moon.BEAN.EquipeBean;
-import com.moon.BO.CampeonatoBO;
 import com.moon.DAO.ConnectionFactory;
 
 import jdk.nashorn.internal.runtime.ListAdapter;
@@ -88,36 +87,22 @@ public class EquipeDAO {
 		return null;
 	}
 	
-	public ArrayList<CampeonatoBean> buscarCampeonatos(EquipeBean equipe) {
+	public ArrayList<Integer> buscarCampeonatos(EquipeBean equipe) {
 		
-		ArrayList<Integer> idCampeonatos = new ArrayList<Integer>();
+		ArrayList<Integer> campeonatos = new ArrayList<Integer>();
 				
 		String sql = "SELECT * FROM campeonato_equipe WHERE id_equipe='"+equipe.getId()+"'";
-		
-		
-		CampeonatoBO campeonatoBO = new CampeonatoBO();
-		ArrayList<CampeonatoBean> campeonatos = campeonatoBO.listarCampeonatos();
-		ArrayList<CampeonatoBean> resultado = new ArrayList<CampeonatoBean>();
 		
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 
 			if(rs.next()) {
-				idCampeonatos.add(rs.getInt("id_campeonato"));
+				campeonatos.add(rs.getInt("id_campeonato"));
 			}
-			
-			for(int i = 0; i < idCampeonatos.size(); i++) {
-				for(int j = 0; j < campeonatos.size(); j++) {
-					if(idCampeonatos.get(i) == campeonatos.get(j).getId()){
-						resultado.add(campeonatos.get(j));
-					}
-				}
-			}
-			
-			return resultado;
+			return campeonatos;
 		}catch (Exception error) {
-			return resultado;
+			return campeonatos;
 		}
 	}
 }

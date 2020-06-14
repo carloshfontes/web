@@ -106,7 +106,7 @@ public class EquipeDAO {
 		
 		ArrayList<Integer> campeonatos = new ArrayList<Integer>();
 				
-		String sql = "SELECT * FROM campeonato_equipe WHERE id_equipe='"+equipe.getId()+"'";
+		String sql = "SELECT * FROM campeonato_equipe WHERE id_equipe="+equipe.getId();
 		
 		try {
 			st = conn.createStatement();

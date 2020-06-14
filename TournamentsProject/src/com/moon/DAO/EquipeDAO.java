@@ -87,6 +87,21 @@ public class EquipeDAO {
 		return null;
 	}
 	
+	public EquipeBean buscaoEquipeID(int id) {
+		String sql = "SELECT * FROM equipe WHERE id="+id;
+
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+
+			EquipeBean equipeBean = new EquipeBean(rs.getString("nome"), rs.getInt("id"), rs.getString("usuario"), rs.getString("senha"));
+			return equipeBean;
+			 
+		}catch (Exception error) {
+			return null;
+		}
+	}
+	
 	public ArrayList<Integer> buscarCampeonatos(EquipeBean equipe) {
 		
 		ArrayList<Integer> campeonatos = new ArrayList<Integer>();

@@ -24,7 +24,6 @@ public class ConfrontoDAO {
 		conn = new ConnectionFactory().getConnection();
 	}
 
-	
 	public void cadastrarConfronto(ConfrontoBean confrontoBean) {
 		System.out.println("chama");
 		String sql = "INSERT INTO confronto (numero_confronto, id_rodada, id_equipe1, id_equipe2, id_campeao, id_campeonato) values (?,?,?,?,?,?)";
@@ -162,10 +161,26 @@ public class ConfrontoDAO {
 		}
 	}
 	
+	private void adicionarCampeaoConfronto(ConfrontoBean confronto, EquipeBean equipe) {
+		
+		String sql = "UPDATE confronto SET id_campeao = "+equipe.getId()+" WHERE id = "+confronto.getId();
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.execute();
+			ps.close();
+			
+		}catch (Exception error) {
+			System.out.println("false: "+error);
+		}
+	}
+	
 	public void passarRodada(CampeonatoBean campeonato, ConfrontoBean confronto, EquipeBean equipe) {
 		
 		int numeroConfronto = 0;
 		ConfrontoBean confrontoVago = null;
+		
+		adicionarCampeaoConfronto(confronto, equipe);
 		
 		if(confronto.getNumero_confronto() == 1 || confronto.getNumero_confronto() == 2) {
 			numeroConfronto = 1;

@@ -32,4 +32,8 @@ public class ConfrontoBO {
 	public void passarRodada(CampeonatoBean campeonato, ConfrontoBean confronto, EquipeBean equipe) {
 		confrontoDAO.passarRodada(campeonato, confronto, equipe);
 	}
+	
+	public ConfrontoBean buscarConfrontoRodada(CampeonatoBean campeonato, int rodada, int confronto) {
+		return confrontoDAO.buscarConfrontoRodada(campeonato, rodada, confronto);
+	}
 }

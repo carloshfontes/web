@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 
 import com.moon.BEAN.CampeonatoBean;
 import com.moon.BEAN.EquipeBean;
+import com.moon.BEAN.CampeonatoBean;
 import com.moon.DAO.ConnectionFactory;
 
 public class CampeonatoDAO {
@@ -35,7 +36,7 @@ public class CampeonatoDAO {
 			ps.setString(2, campeonatoBean.getJogo());
 			ps.setString(3, campeonatoBean.getDescricao());
 			ps.setDate(4, (Date) campeonatoBean.getData());
-			ps.setInt(5, campeonatoBean.getMax_equipes());
+			ps.setInt(5, 8);
 			ps.setInt(6, campeonatoBean.getIdOrganizacao());
 
 			ps.execute();

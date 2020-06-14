@@ -1,7 +1,10 @@
 package com.moon.BO;
 
 import java.util.ArrayList;
+
+import com.moon.BEAN.CampeonatoBean;
 import com.moon.BEAN.ConfrontoBean;
+import com.moon.BEAN.EquipeBean;
 import com.moon.DAO.ConfrontoDAO;
 
 public class ConfrontoBO {
@@ -22,4 +25,11 @@ public class ConfrontoBO {
 		return confrontoDAO.buscarConfrontos();
 	}
 
+	public void cadastraEquipeConfronto(CampeonatoBean campeonato, EquipeBean equipe) {
+		confrontoDAO.cadastraEquipeConfronto(campeonato, equipe);
+	}
+	
+	public void passarRodada(CampeonatoBean campeonato, ConfrontoBean confronto, EquipeBean equipe) {
+		confrontoDAO.passarRodada(campeonato, confronto, equipe);
+	}
 }

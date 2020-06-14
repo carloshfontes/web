@@ -24,6 +24,25 @@ public class ConfrontoBean {
 		this.setId_campeonato(id_campeonato);
 	}
 	
+	public ConfrontoBean(int numero_confronto, int id, int id_rodada, int id_equipe1, int id_campeao, int id_campeonato) {
+		super();
+		this.setNumero_confronto(numero_confronto);
+		this.setId(id);
+		this.setId_rodada(id_rodada);
+		this.setId_equipe1(id_equipe1);
+		this.setId_campeao(id_campeao);
+		this.setId_campeonato(id_campeonato);
+	}
+	
+	public ConfrontoBean(int numero_confronto, int id, int id_rodada, int id_equipe1, int id_campeonato) {
+		super();
+		this.setNumero_confronto(numero_confronto);
+		this.setId(id);
+		this.setId_rodada(id_rodada);
+		this.setId_equipe1(id_equipe1);
+		this.setId_campeonato(id_campeonato);
+	}
+	
 	public int getNumero_confronto() {
 		return numero_confronto;
 	}

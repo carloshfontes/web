@@ -76,7 +76,7 @@ campeonatos = campeonatoBO.listarCampeonatos();
 						</a>
 					</div>
 					<% } %>
-				</div>
+				</div> 
 			</div>
 		</div>
 	</div>

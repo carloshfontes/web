@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 
 import com.moon.BEAN.CampeonatoBean;
 import com.moon.BEAN.EquipeBean;
-import com.moon.BEAN.CampeonatoBean;
 import com.moon.DAO.ConnectionFactory;
 
 public class CampeonatoDAO {

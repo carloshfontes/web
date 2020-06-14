@@ -24,9 +24,9 @@ public class EquipeBO {
 		return equipeDAO.buscarEquipes();
 	}
 	
-	public int buscarOrganiacao(String usuario, String senha) {
+	public EquipeBean buscarEquipe(String usuario, String senha) {
 		
-		return this.equipeDAO.buscaoEquipes(usuario, senha);
+		return this.equipeDAO.buscaoEquipe(usuario, senha);
 	}
 	
 	public ArrayList<CampeonatoBean> buscarCampeonatos(EquipeBean equipe) {

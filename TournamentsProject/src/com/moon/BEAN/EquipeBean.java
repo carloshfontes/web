@@ -15,6 +15,11 @@ public class EquipeBean {
 		this.setSenha(senha);
 	}
 	
+	public EquipeBean(int id) {
+		super();
+		this.setId(id);
+	}
+	
 	public String getNome() {
 		return nome;
 	}

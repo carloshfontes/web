@@ -22,7 +22,15 @@ public class CampeonatoPaginaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idCampeonato = Integer.parseInt(request.getParameter("id"));
 		CampeonatoBO campeonatoBO = new CampeonatoBO();
+		String redirect = "index.jsp";
+
 		CampeonatoBean campeonatoBean = campeonatoBO.buscarCampeonato(idCampeonato);
+		if (campeonatoBean != null) {
+			redirect = "campeonato.jsp";
+			request.setAttribute("campeonato", campeonatoBean);
+		}
+
+		request.getRequestDispatcher(redirect).forward(request, response);
 //		System.out.println(request.getParameter("id"));
 	}
 

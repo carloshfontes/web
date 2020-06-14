@@ -34,6 +34,11 @@ public class CampeonatoBean {
 		this.max_equipes = max_equipes;
 	}
 	
+	public CampeonatoBean(int id) {
+		super();
+		this.id = id;
+	}
+	
 	public String getNome() {
 		return nome;
 	}

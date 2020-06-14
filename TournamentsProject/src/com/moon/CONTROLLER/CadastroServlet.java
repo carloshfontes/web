@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.moon.BO.EquipeBO;
 import com.moon.BO.OrganizacaoBO;
 
 @WebServlet("/CadastroServlet")
@@ -22,16 +23,20 @@ public class CadastroServlet extends HttpServlet {
 		String usuario = request.getParameter("usuario");
 		String senha = request.getParameter("senha");
 		String tipo = request.getParameter("tipo");
+		String redirect = "cadastrar.jsp";
 		
 		
 		switch (tipo) {
 		case "Organizacao":
 			OrganizacaoBO organizacaoBO = new OrganizacaoBO();
 			organizacaoBO.cadastrarOrganizacao(nome, usuario, senha);
+			redirect = "login.jsp";
 			break;
 			
 		case "Equipe":
-			System.out.println("equipe");
+			EquipeBO equipeBO = new EquipeBO();
+			equipeBO.cadastrarEquipe(nome, usuario, senha);
+			redirect = "login.jsp";
 			break;
 
 		default:
@@ -40,7 +45,7 @@ public class CadastroServlet extends HttpServlet {
 
 
 	
-//		request.getRequestDispatcher("cadastrarCarro.htm").forward(request, response);
+		request.getRequestDispatcher(redirect).forward(request, response);
 	}
 
 }

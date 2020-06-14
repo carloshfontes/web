@@ -66,7 +66,7 @@ public class EquipeDAO {
 		return lista;
 	}
 	
-	public int buscaoEquipes(String usuario, String senha) {
+	public EquipeBean buscaoEquipe(String usuario, String senha) {
 		String sql = "SELECT * FROM equipe WHERE usuario='"+usuario+"' and senha='"+senha+"'";
 
 		
@@ -77,13 +77,14 @@ public class EquipeDAO {
 			if(rs.next()) {
 				System.out.println("usuario: "+rs.getString("usuario"));
 				System.out.println("Senha: "+rs.getString("senha"));
-				return rs.getInt("id");
+				EquipeBean equipeBean = new EquipeBean(rs.getString("nome"), rs.getInt("id"), rs.getString("usuario"), rs.getString("senha"));
+				return equipeBean;
 			}
 			 
 		}catch (Exception error) {
-			return 0;
+			return null;
 		}
-		return 0;
+		return null;
 	}
 	
 	public ArrayList<Integer> buscarCampeonatos(EquipeBean equipe) {

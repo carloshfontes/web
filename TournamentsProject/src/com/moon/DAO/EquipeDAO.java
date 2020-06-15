@@ -76,7 +76,7 @@ public class EquipeDAO {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 
-			if(rs.next()) {
+			while(rs.next()) {
 
 				EquipeBean equipeBean = new EquipeBean(rs.getString("nome"), rs.getInt("id"), rs.getString("usuario"), rs.getString("senha"));
 				return equipeBean;
@@ -96,7 +96,7 @@ public class EquipeDAO {
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
-			if(rs.next()) {
+			while(rs.next()) {
 				EquipeBean equipeBean = new EquipeBean(rs.getString("nome"), rs.getInt("id"), rs.getString("usuario"), rs.getString("senha"));
 				return equipeBean;	
 			}
@@ -112,22 +112,45 @@ public class EquipeDAO {
 	public ArrayList<Integer> buscarCampeonatos(EquipeBean equipe) {
 		
 		ArrayList<Integer> campeonatos = new ArrayList<Integer>();
-				
+		System.out.println("equipe: "+equipe.getId());		
 		String sql = "SELECT * FROM campeonato_equipe WHERE id_equipe="+equipe.getId();
 		
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 
-			if(rs.next()) {
+			while(rs.next()) {
 				campeonatos.add(rs.getInt("id_campeonato"));
 			}
 			
 			st.close();
 			rs.close();
+			System.out.println(campeonatos.size());
 			return campeonatos;
 		}catch (Exception error) {
 			return campeonatos;
+		}
+	}
+	
+	public CampeonatoBean buscarCampeonato(int id, EquipeBean equipe) {
+	
+		String sql = "SELECT * FROM campeonato_equipe WHERE id_campeonato="+id+ "and id_equipe="+equipe.getId();
+		CampeonatoBean campeonatoBean = null;
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+
+			if(rs.next()) {
+				campeonatoBean = new CampeonatoBean(rs.getInt("id_campeonato"));
+			}
+			
+			st.close();
+			rs.close();
+			
+			
+			return campeonatoBean;
+		}catch (Exception error) {
+			return null;
 		}
 	}
 }

@@ -43,8 +43,14 @@ public class EquipeBO {
 				}
 			}
 		}
+		System.out.println(idCampeonatos);
+		System.out.println("listaaa: "+lista.size());
 		
 		return lista;
+	}
+	
+	public CampeonatoBean buscarCampeonato(int id, EquipeBean equipe) {
+		return equipeDAO.buscarCampeonato(id, equipe);
 	}
 	
 	public EquipeBean buscaoEquipeID(int id) {

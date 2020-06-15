@@ -80,8 +80,36 @@ public class ConfrontoDAO {
 		return lista;
 	}
 	
-	public ArrayList<ConfrontoBean> buscaoConfrontos(CampeonatoBean campeonato) {
+	
+	public ArrayList<ConfrontoBean> buscarCf(CampeonatoBean campeonato) {
+		System.out.println(campeonato);
+//		String sql = "SELECT c.numero_confronto, c.id, c.id_equipe1, c.id_equipe2, c.id_campeao, c.id_campeonato, c.id_rodada, e.nome, e2.nome AS 'nome2' from confronto c, equipe e, equipe e2 where c.id_campeonato ="+campeonato.getId()+" and  e.id = c.id_equipe1 and e2.id = c.id_equipe2 group by e.nome, e2.nome";
+		String sql = "SELECT * FROM confronto WHERE id_campeonato='"+campeonato.getId()+"'";
+		ArrayList<ConfrontoBean> lista = new ArrayList<ConfrontoBean>();
 		
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			
+			while(rs.next()) {
+				ConfrontoBean confronto = new ConfrontoBean(rs.getInt("numero_confronto"), rs.getInt("id"), rs.getInt("id_rodada"), rs.getInt("id_equipe1"), rs.getInt("id_equipe2"), rs.getInt("id_campeao"), rs.getInt("id_campeonato"));
+//				ConfrontoBean confronto = new ConfrontoBean(rs.getInt("numero_confronto"), rs.getInt("id"), rs.getInt("id_rodada"), rs.getInt("id_equipe1"), rs.getInt("id_equipe2"), rs.getInt("id_campeao"), rs.getInt("id_campeonato"), rs.getString("nome"), rs.getString("nome2"));
+				lista.add(confronto);
+			}
+			
+			st.close();
+			rs.close();
+			
+		} catch (Exception e) {
+			throw new RuntimeException("Erro na busca de confrontos: " + e);
+		}
+		
+		return lista;
+	}
+	
+	
+	public ArrayList<ConfrontoBean> buscaoConfrontos(CampeonatoBean campeonato) {
+		System.out.println(campeonato);
 		String sql = "SELECT c.numero_confronto, c.id, c.id_equipe1, c.id_equipe2, c.id_campeao, c.id_campeonato, c.id_rodada, e.nome, e2.nome AS 'nome2' from confronto c, equipe e, equipe e2 where c.id_campeonato ="+campeonato.getId()+" and  e.id = c.id_equipe1 and e2.id = c.id_equipe2 group by e.nome, e2.nome";
 //		String sql = "SELECT * FROM confronto WHERE id_campeonato='"+campeonato.getId()+"'";
 		ArrayList<ConfrontoBean> lista = new ArrayList<ConfrontoBean>();
@@ -142,7 +170,8 @@ public class ConfrontoDAO {
 
 	public void cadastraEquipeConfronto(CampeonatoBean campeonato, EquipeBean equipe) {
 		System.out.println(equipe.getId());
-		ArrayList<ConfrontoBean> lista = buscaoConfrontos(campeonato);
+		ArrayList<ConfrontoBean> lista = buscarCf(campeonato);
+		System.out.println(lista);
 		ConfrontoBean confrontoVago = null;
 		
 
@@ -196,7 +225,7 @@ public class ConfrontoDAO {
 			numeroConfronto = 2;
 		}
 	
-		ArrayList<ConfrontoBean> confrontos = buscaoConfrontos(campeonato);
+		ArrayList<ConfrontoBean> confrontos = buscarCf(campeonato);
 		
 		for(int i = 0; i < confrontos.size(); i++) {
 			if(confrontos.get(i).getNumero_confronto() == numeroConfronto && confrontos.get(i).getId_rodada() == (confronto.getId_rodada() + 1)) {

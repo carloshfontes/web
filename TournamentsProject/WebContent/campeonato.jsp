@@ -7,7 +7,7 @@
 <%@ page import="com.moon.BO.EquipeBO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page import="com.moon.BEAN.EquipeBean"%>
-
+<%@ page import="com.moon.BEAN.OrganizacaoBean"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,19 +32,30 @@
 	<%
 		HttpSession s = request.getSession();
 	EquipeBean equipe = (EquipeBean) s.getAttribute("equipe");
-
+	OrganizacaoBean organizacao = (OrganizacaoBean) s.getAttribute("organizacaoBean");
+	
 	CampeonatoBean campeonatoBean = (CampeonatoBean) request.getAttribute("campeonato");
+	EquipeBO equipeBO = new EquipeBO();
+	
+		
 	%>
 
 	<nav class="navbar">
-		<a class="navbar-brand navbar-nav mr-auto" href="#"> <img
+		<a class="navbar-brand navbar-nav mr-auto" href="http://localhost:8080/TournamentsProject"> <img
 			src="<c:url value="/resources/imagens/08.png"/>" width="150"
 			class="d-inline-block align-top">
 		</a>
 
 		<div class="navbar-nav">
-			<a href="login.jsp"><button type="button"
+			<% if (equipe != null ) {%>
+				
+				<p class="text-light"><%=equipe.getNome() %></p> 
+			<% } else if (organizacao != null){ %>
+				<p class="text-light"><%=organizacao.getNome() %></p> 
+			<% } else { %>
+				<a href="login.jsp"><button type="button"
 					class="btn cor1 text-light mr-2" style="border-radius: 20px;">Entrar</button></a>
+			<% } %>
 		</div>
 
 	</nav>
@@ -77,13 +88,15 @@
 											value="<%=equipe.getId()%>" name="equipe" id="equipe">
 									</div>
 								</div>
-
+								
+								
 								<div class="form-row">
-									<div class="col-12">
+									<div class="col-12 text-right">
 										<button type="submit" class="btn btn-primary">Me
 											inscrever</button>
 									</div>
 								</div>
+								
 							</form>
 
 						</div>
@@ -121,7 +134,8 @@
 								${confronto.getEquipe2()}
 								</div>
 							</div>
-
+					
+						<% if (organizacao != null) { %>>
 							<div class="row">
 								<div class="col-6">
 									<a
@@ -135,7 +149,7 @@
 											class="btn btn-primary btn-sm">${confronto.getEquipe2()}</button></a>
 								</div>
 							</div>
-
+						<% } %>
 						</div>
 					</div>
 				</c:if>
@@ -169,6 +183,7 @@
 								</div>
 							</div>
 
+						<% if (organizacao != null) { %>>
 							<div class="row">
 								<div class="col-6">
 									<a
@@ -182,7 +197,7 @@
 											class="btn btn-primary btn-sm">${confronto.getEquipe2()}</button></a>
 								</div>
 							</div>
-
+						<% } %>
 						</div>
 					</div>
 				</c:if>
@@ -216,6 +231,7 @@
 								</div>
 							</div>
 
+						<% if (organizacao != null) { %>>
 							<div class="row">
 								<div class="col-6">
 									<a
@@ -229,6 +245,7 @@
 											class="btn btn-primary btn-sm">${confronto.getEquipe2()}</button></a>
 								</div>
 							</div>
+						<% } %>
 
 						</div>
 					</div>

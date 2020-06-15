@@ -5,6 +5,8 @@
 <%@ page import="com.moon.BEAN.CampeonatoBean"%>
 <%@ page import="com.moon.BO.CampeonatoBO"%>
 <%@page import="java.util.ArrayList"%>
+<%@ page import="com.moon.BEAN.EquipeBean"%>
+<%@ page import="com.moon.BEAN.OrganizacaoBean"%>
 
 
 <!DOCTYPE html>
@@ -26,24 +28,36 @@
 
 <body class="bg">
 
-	<nav class="navbar">
-		<a class="navbar-brand navbar-nav mr-auto" href="#"> <img
-			src="<c:url value="/resources/imagens/08.png"/>" width="150"
-			class="d-inline-block align-top">
-		</a>
-
-		<div class="navbar-nav">
-			<a href="login.jsp"><button type="button"
-					class="btn cor1 text-light mr-2" style="border-radius: 20px;">Entrar</button></a>
-		</div>
-
-	</nav>
 	<%
 CampeonatoBO campeonatoBO = new CampeonatoBO();
 ArrayList<CampeonatoBean> campeonatos = new ArrayList<CampeonatoBean>();
 campeonatos = campeonatoBO.listarCampeonatos();
 
+HttpSession s = request.getSession();
+EquipeBean equipe = (EquipeBean) s.getAttribute("equipe");
+
+
+
 %>
+
+	<nav class="navbar">
+		<a class="navbar-brand navbar-nav mr-auto" href="/"> <img
+			src="<c:url value="/resources/imagens/08.png"/>" width="150"
+			class="d-inline-block align-top">
+		</a>
+
+		<div class="navbar-nav">
+			<% if (equipe != null ) {%>
+				
+				<p class="text-light"><%=equipe.getNome() %></p> 
+			<% } else { %>
+				<a href="login.jsp"><button type="button"
+					class="btn cor1 text-light mr-2" style="border-radius: 20px;">Entrar</button></a>
+			<% } %>
+		</div>
+
+	</nav>
+
 
 
 	<div class="container">
@@ -56,19 +70,19 @@ campeonatos = campeonatoBO.listarCampeonatos();
 							<div class="card card-body cor3">
 								<div class="row mt-2">
 									<div class="col-12">
-										<h3 class="text-dark"><%=campeonatos.get(i).getNome()%></h3>
+										<h3 class="text-light"><%=campeonatos.get(i).getNome()%></h3>
 									</div>
 								</div>
 
 								<div class="row mt-2">
 									<div class="col-12">
-										<h3 class="text-dark"><%=campeonatos.get(i).getJogo()%></h3>
+										<h3 class="text-light"><%=campeonatos.get(i).getJogo()%></h3>
 									</div>
 								</div>
 
 								<div class="row mt-2">
 									<div class="col-12">
-										<h3 class="text-dark"><%=campeonatos.get(i).getMax_equipes()%></h3>
+										<h3 class="text-light"><%=campeonatos.get(i).getMax_equipes()%></h3>
 									</div>
 								</div>
 

@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.moon.DAO.CampeonatoDAO;
 import com.moon.BEAN.EquipeBean;
+import com.moon.BEAN.OrganizacaoBean;
 import com.moon.BEAN.CampeonatoBean;
 
 public class CampeonatoBO {
@@ -31,4 +32,8 @@ public class CampeonatoBO {
 	public CampeonatoBean buscarCampeonato(int id) {
         return this.campeonatoDAO.buscaoCampeonatos(id);
     }
+	
+	public ArrayList<CampeonatoBean> buscarCampeonatoOrganizacao(OrganizacaoBean organizacaoBean) {
+		return this.campeonatoDAO.buscarCampeonatoOrganizacao(organizacaoBean);
+	}
 }

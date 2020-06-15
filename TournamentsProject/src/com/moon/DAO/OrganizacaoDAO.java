@@ -57,6 +57,8 @@ public class OrganizacaoDAO {
 				lista.add(organizacao);
 			}
 			
+			st.close();
+			rs.close();
 		} catch (Exception e) {
 			throw new RuntimeException("Erro na busca de organizacoes: " + e);
 		}
@@ -77,7 +79,9 @@ public class OrganizacaoDAO {
 				System.out.println("Senha: "+rs.getString("senha"));
 				return rs.getInt("id");
 			}
-			 
+			
+			st.close();
+			rs.close();
 		}catch (Exception error) {
 			return 0;
 		}

@@ -62,6 +62,8 @@ public class CampeonatoDAO {
 				lista.add(campeonato);
 			}
 			
+			st.close();
+			rs.close();
 		} catch (Exception e) {
 			throw new RuntimeException("Erro na busca de campeonatos: " + e);
 		}
@@ -102,6 +104,8 @@ public class CampeonatoDAO {
             	return new CampeonatoBean(rs.getString("nome"), rs.getInt("id"), rs.getString("jogo"), rs.getString("descricao"), rs.getDate("data"), rs.getInt("max_equipes"));
             }
 
+            st.close();
+			rs.close();
         }catch (Exception error) {
             return null;
         }

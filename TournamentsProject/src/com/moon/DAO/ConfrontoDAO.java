@@ -70,6 +70,8 @@ public class ConfrontoDAO {
 				ConfrontoBean confronto = new ConfrontoBean(rs.getInt("numero_confronto"), rs.getInt("id"), rs.getInt("id_rodada"), rs.getInt("id_equipe1"), rs.getInt("id_equipe2"), rs.getInt("id_campeao"), rs.getInt("id_campeonato"));
 				lista.add(confronto);
 			}
+			st.close();
+			rs.close();
 			
 		} catch (Exception e) {
 			throw new RuntimeException("Erro na busca de confrontos: " + e);
@@ -94,6 +96,9 @@ public class ConfrontoDAO {
 				lista.add(confronto);
 			}
 			
+			st.close();
+			rs.close();
+			
 		} catch (Exception e) {
 			throw new RuntimeException("Erro na busca de confrontos: " + e);
 		}
@@ -112,6 +117,8 @@ public class ConfrontoDAO {
 
 			confrontoBean = new ConfrontoBean(rs.getInt("numero_confronto"), rs.getInt("id"), rs.getInt("id_rodada"), rs.getInt("id_equipe1"), rs.getInt("id_equipe2"), rs.getInt("id_campeao"), rs.getInt("id_campeonato"));
 			
+			st.close();
+			rs.close();
 		} catch (Exception e) {
 			throw new RuntimeException("Erro na busca de confrontos: " + e);
 		}

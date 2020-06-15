@@ -59,6 +59,8 @@ public class EquipeDAO {
 				lista.add(equipe);
 			}
 			
+			st.close();
+			rs.close();
 		} catch (Exception e) {
 			throw new RuntimeException("Erro na busca de Equipes: " + e);
 		}
@@ -80,6 +82,8 @@ public class EquipeDAO {
 				return equipeBean;
 			}
 			 
+			st.close();
+			rs.close();
 		}catch (Exception error) {
 			return null;
 		}
@@ -97,6 +101,8 @@ public class EquipeDAO {
 				return equipeBean;	
 			}
 			 
+			st.close();
+			rs.close();
 		}catch (Exception error) {
 			return null;
 		}
@@ -116,6 +122,9 @@ public class EquipeDAO {
 			if(rs.next()) {
 				campeonatos.add(rs.getInt("id_campeonato"));
 			}
+			
+			st.close();
+			rs.close();
 			return campeonatos;
 		}catch (Exception error) {
 			return campeonatos;

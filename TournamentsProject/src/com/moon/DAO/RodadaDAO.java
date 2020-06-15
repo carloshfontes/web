@@ -35,7 +35,6 @@ public class RodadaDAO {
 			ps.execute();
 			ps.close();
 			
-			
 		}catch (Exception error) {
 			System.out.println("false: "+error);
 		}
@@ -55,6 +54,8 @@ public class RodadaDAO {
 				lista.add(rodada);
 			}
 			
+			st.close();
+			rs.close();
 		} catch (Exception e) {
 			throw new RuntimeException("Erro na busca de rodadas: " + e);
 		}

@@ -43,7 +43,7 @@
 		</a>
 
 		<div class="navbar-nav">
-			<a href="login.htm"><button type="button"
+			<a href="login.jsp"><button type="button"
 					class="btn cor1 text-light mr-2" style="border-radius: 20px;">Entrar</button></a>
 		</div>
 
@@ -126,11 +126,13 @@
 								<div class="col-6">
 									<a
 										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}"><button
-											class="btn btn-primary btn-sm">${confronto.getId_equipe1()}</button></a>
+											class="btn btn-primary btn-sm">${confronto.getEquipe1()}</button></a>
 								</div>
 
 								<div class="col-6">
-									<a><button class="btn btn-primary btn-sm">${confronto.getId_equipe2()}</button></a>
+									<a
+										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}"><button
+											class="btn btn-primary btn-sm">${confronto.getEquipe2()}</button></a>
 								</div>
 							</div>
 
@@ -157,11 +159,13 @@
 						<div class="card rounded p-3 bg-light">
 							<div class="row">
 								<div class="col-12">
+									${confronto.getEquipe1()}
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="col-12">
+								${confronto.getEquipe2()}
 								</div>
 							</div>
 
@@ -169,11 +173,13 @@
 								<div class="col-6">
 									<a
 										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}"><button
-											class="btn btn-primary btn-sm">${confronto.getId_equipe1()}</button></a>
+											class="btn btn-primary btn-sm">${confronto.getEquipe1()}</button></a>
 								</div>
 
 								<div class="col-6">
-									<a><button class="btn btn-primary btn-sm">${confronto.getId_equipe2()}</button></a>
+									<a
+										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}"><button
+											class="btn btn-primary btn-sm">${confronto.getEquipe2()}</button></a>
 								</div>
 							</div>
 
@@ -200,13 +206,13 @@
 						<div class="card rounded p-3 bg-light">
 							<div class="row">
 								<div class="col-12">
-									<h6>${confronto.getId_equipe1()}</h6>
+									${confronto.getEquipe1()}
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="col-12">
-									<h6>${confronto.getId_equipe2()}</h6>
+								${confronto.getEquipe2()}
 								</div>
 							</div>
 
@@ -214,11 +220,13 @@
 								<div class="col-6">
 									<a
 										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}"><button
-											class="btn btn-primary btn-sm">${confronto.getId_equipe1()}</button></a>
+											class="btn btn-primary btn-sm">${confronto.getEquipe1()}</button></a>
 								</div>
 
 								<div class="col-6">
-									<a><button class="btn btn-primary btn-sm">${confronto.getId_equipe2()}</button></a>
+									<a
+										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}"><button
+											class="btn btn-primary btn-sm">${confronto.getEquipe2()}</button></a>
 								</div>
 							</div>
 

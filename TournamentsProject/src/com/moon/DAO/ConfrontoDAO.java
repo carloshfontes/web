@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 
 import com.moon.BEAN.CampeonatoBean;
 import com.moon.BEAN.ConfrontoBean;
-import com.moon.BEAN.ConfrontoEquipeBean;
 import com.moon.BEAN.EquipeBean;
 import com.moon.DAO.ConnectionFactory;
 
@@ -26,7 +25,7 @@ public class ConfrontoDAO {
 	}
 
 	public void cadastrarConfronto(ConfrontoBean confrontoBean) {
-		System.out.println("chama");
+		System.out.println("boi JOJO");
 		String sql = "INSERT INTO confronto (numero_confronto, id_rodada, id_equipe1, id_equipe2, id_campeao, id_campeonato) values (?,?,?,?,?,?)";
 		
 		try {
@@ -135,11 +134,11 @@ public class ConfrontoDAO {
 	}
 
 	public void cadastraEquipeConfronto(CampeonatoBean campeonato, EquipeBean equipe) {
-		System.out.println("alooo");
+		System.out.println(equipe.getId());
 		ArrayList<ConfrontoBean> lista = buscaoConfrontos(campeonato);
 		ConfrontoBean confrontoVago = null;
 		
-		System.out.println(lista.size());
+
 		for(int i = 0; i < lista.size(); i++) {
 			System.out.println("TA CHEGANDO  = " + lista.get(i).getId_equipe2());
 			
@@ -157,7 +156,6 @@ public class ConfrontoDAO {
 		if(confrontoVago == null) {
 			ConfrontoBean confrontoBean = new ConfrontoBean(lista.size() + 1, 1, 1, equipe.getId(), campeonato.getId());
 			cadastrarConfronto(confrontoBean);
-			System.out.println("vtnc: "+confrontoVago);
 		}else {
 			adicionarEquipeConfronto(confrontoVago, equipe);
 			System.out.println(confrontoVago);

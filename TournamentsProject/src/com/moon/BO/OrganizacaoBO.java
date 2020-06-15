@@ -22,7 +22,7 @@ public class OrganizacaoBO {
 		return organizacaoDAO.buscarOrganizacoes();
 	}
 
-	public int buscarOrganiacao(String usuario, String senha) {
+	public OrganizacaoBean buscarOrganiacao(String usuario, String senha) {
 		
 		return this.organizacaoDAO.buscaoOrganizacao(usuario, senha);
 	}

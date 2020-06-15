@@ -66,7 +66,7 @@ public class OrganizacaoDAO {
 		return lista;
 	}
 	
-	public int buscaoOrganizacao(String usuario, String senha) {
+	public OrganizacaoBean buscaoOrganizacao(String usuario, String senha) {
 		String sql = "SELECT * FROM organizacao WHERE usuario='"+usuario+"' and senha='"+senha+"'";
 
 		
@@ -77,14 +77,15 @@ public class OrganizacaoDAO {
 			if(rs.next()) {
 				System.out.println("usuario: "+rs.getString("usuario"));
 				System.out.println("Senha: "+rs.getString("senha"));
-				return rs.getInt("id");
+				OrganizacaoBean organizacaoBean = new OrganizacaoBean(rs.getInt("id"));
+				return organizacaoBean;
 			}
 			
 			st.close();
 			rs.close();
 		}catch (Exception error) {
-			return 0;
+			return null;
 		}
-		return 0;
+		return null;
 	}
 }

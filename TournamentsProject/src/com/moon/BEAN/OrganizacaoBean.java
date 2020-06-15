@@ -15,6 +15,12 @@ public class OrganizacaoBean {
 		this.setSenha(senha);
 	}
 	
+	public OrganizacaoBean(int id) {
+		super();
+		this.setId(id);
+	}
+	
+	
 	public String getNome() {
 		return nome;
 	}

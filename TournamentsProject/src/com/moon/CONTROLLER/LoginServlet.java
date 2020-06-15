@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.moon.BEAN.EquipeBean;
+import com.moon.BEAN.OrganizacaoBean;
 import com.moon.BO.EquipeBO;
 import com.moon.BO.OrganizacaoBO;
 
@@ -30,8 +31,8 @@ public class LoginServlet extends HttpServlet {
 		switch (tipo) {
 		case "Organizacao":
 			OrganizacaoBO organizacaoBO = new OrganizacaoBO();
-			int resultadoBusca = organizacaoBO.buscarOrganiacao(usuario, senha);
-			if( resultadoBusca != 0) {
+			OrganizacaoBean resultadoBusca = organizacaoBO.buscarOrganiacao(usuario, senha);
+			if( resultadoBusca != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute("organizacao", resultadoBusca);
 				redirect = "dashboardOrganizacao.jsp";

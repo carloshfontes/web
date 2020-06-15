@@ -32,7 +32,7 @@
 	<%
 		HttpSession s = request.getSession();
 	EquipeBean equipe = (EquipeBean) s.getAttribute("equipe");
-	OrganizacaoBean organizacao = (OrganizacaoBean) s.getAttribute("organizacaoBean");
+	OrganizacaoBean organizacao = (OrganizacaoBean) s.getAttribute("organizacao");
 	
 	CampeonatoBean campeonatoBean = (CampeonatoBean) request.getAttribute("campeonato");
 	EquipeBO equipeBO = new EquipeBO();
@@ -50,9 +50,7 @@
 			<% if (equipe != null ) {%>
 				
 				<p class="text-light"><%=equipe.getNome() %></p> 
-			<% } else if (organizacao != null){ %>
-				<p class="text-light"><%=organizacao.getNome() %></p> 
-			<% } else { %>
+			<% }else { %>
 				<a href="login.jsp"><button type="button"
 					class="btn cor1 text-light mr-2" style="border-radius: 20px;">Entrar</button></a>
 			<% } %>

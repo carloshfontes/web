@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 
 import com.moon.BEAN.CampeonatoBean;
 import com.moon.BEAN.EquipeBean;
+import com.moon.BEAN.OrganizacaoBean;
 import com.moon.BEAN.CampeonatoBean;
 import com.moon.DAO.ConnectionFactory;
 
@@ -111,4 +112,27 @@ public class CampeonatoDAO {
         }
         return null;
     }
+	
+	public ArrayList<CampeonatoBean> buscarCampeonatoOrganizacao(OrganizacaoBean organizacaoBean) {
+		
+		String sql = "SELECT * FROM campeonato WHERE id_organizacao="+organizacaoBean.getId();
+		ArrayList<CampeonatoBean> lista = new ArrayList<CampeonatoBean>();
+		
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+
+            while(rs.next()) {
+            	CampeonatoBean campeonatoBean = new CampeonatoBean(rs.getString("nome"), rs.getInt("id"), rs.getString("jogo"), rs.getString("descricao"), rs.getDate("data"), rs.getInt("max_equipes"));
+            	lista.add(campeonatoBean);
+            }
+
+            st.close();
+			rs.close();
+			
+			return lista;
+        }catch (Exception error) {
+            return null;
+        }
+	}
 }

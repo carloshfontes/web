@@ -77,7 +77,7 @@ public class OrganizacaoDAO {
 			if(rs.next()) {
 				System.out.println("usuario: "+rs.getString("usuario"));
 				System.out.println("Senha: "+rs.getString("senha"));
-				OrganizacaoBean organizacaoBean = new OrganizacaoBean(rs.getInt("id"));
+				OrganizacaoBean organizacaoBean = new OrganizacaoBean(rs.getString("nome"), rs.getInt("id"), rs.getString("usuario"), rs.getString("senha"));
 				return organizacaoBean;
 			}
 			

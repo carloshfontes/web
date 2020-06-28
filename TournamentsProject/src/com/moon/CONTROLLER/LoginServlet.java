@@ -40,7 +40,6 @@ public class LoginServlet extends HttpServlet {
 			break;
 			
 		case "Equipe":
-			System.out.println("aq");
 			EquipeBO equipeBO = new EquipeBO();
 			EquipeBean equipeBean = equipeBO.buscarEquipe(usuario, senha);
 			if (equipeBean != null) {

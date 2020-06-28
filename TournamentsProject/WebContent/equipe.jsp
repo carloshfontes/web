@@ -18,6 +18,8 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
+	
+<script src="https://kit.fontawesome.com/7af8d015de.js"></script>
 
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
 <link href="<c:url value="/resources/css/center.css"/>" rel="stylesheet">
@@ -33,27 +35,50 @@
 	
 	%>
 	
-	<nav class="navbar">
-		<a class="navbar-brand navbar-nav mr-auto" href="/TournamentsProject/"> <img
-			src="<c:url value="/resources/imagens/08.png"/>" width="150"
-			class="d-inline-block align-top">
-		</a>
+<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
+					<a class="navbar-brand navbar-nav mr-auto" href="/"> <img
+						src="<c:url value="/resources/imagens/08.png"/>" width="150"
+						class="d-inline-block align-top">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarSupportedContent-333"
+						aria-controls="navbarSupportedContent-333" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item active"><a class="nav-link" href="#">
+									<i class="fab fa-facebook-f"></i> Facebook <span
+									class="sr-only">(current)</span>
+							</a></li>
+							<li class="nav-item"><a class="nav-link text-light" href="#"> <i
+									class="fab fa-instagram"></i> Instagram 
+							</a></li>
 
-		<div class="navbar-nav">
-			<% if (equipe != null ) {%>
-				
-				<p class="text-light"><%=equipe.getNome() %></p> 
-			<% } else { %>
-				<a href="login.jsp"><button type="button"
-					class="btn cor1 text-light mr-2" style="border-radius: 20px;">Entrar</button></a>
-			<% } %>
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle text-light" id="navbarDropdownMenuLink-4"
+								data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false"> <i class="fas fa-user"></i> <%=equipe.getNome()%>
+							</a>
+								<div class="dropdown-menu dropdown-menu-right dropdown-info"
+									aria-labelledby="navbarDropdownMenuLink-4">
+									 <a
+										class="dropdown-item" href="/TournamentsProject/Logout">Sair</a>
+								</div>
+						</ul>
+					</div>
+				</nav>
+			</div>
 		</div>
-
-	</nav>
+	</div>
 	
 	
 
-	<div class="container">
+<%-- 	<div class="container">
 
 		<% for(int i = 0; i < campeonatos.size(); i++) { %>
 		<div class="row mt-3">
@@ -64,8 +89,34 @@
 			</div>
 		</div>
 		<% } %>
+	</div> --%>
+	
+	<div class="container mt-5">
+
+		
+		<div class="row mt-3">
+		<% for(int i = 0; i < campeonatos.size(); i++) { %>
+			<div class="col-4 text-center mb-4">
+				<img class="card-img-top" src="<c:url value="/resources/imagens/bgval.jpg"/>" alt="Card image cap">
+				<div class="card bg-white rounded p-3">
+					<a
+						href="http://localhost:8080/TournamentsProject/CampeonatoPaginaServlet?id=<%=campeonatos.get(i).getId()%>"><h6><%=campeonatos.get(i).getNome() %></h6></a>
+				</div>
+			</div>
+		<% } %>
+		</div>
 	</div>
 
-
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
 </body>
 </html>

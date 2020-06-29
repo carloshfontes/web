@@ -223,6 +223,10 @@ public class ConfrontoDAO {
 		
 		adicionarCampeaoConfronto(confronto, equipe, campeonato);
 		
+		if(confronto.getId_rodada() == 3) {
+			return;
+		}
+		
 		if(confronto.getNumero_confronto() == 1 || confronto.getNumero_confronto() == 2) {
 			numeroConfronto = 1;
 		}else {

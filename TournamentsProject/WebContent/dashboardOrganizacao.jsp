@@ -125,10 +125,10 @@ campeonatos = campeonatoBO.buscarCampeonatoOrganizacao(organizacao);
 					<%
 					break;
 				case "Fortnite":
-					break;
 					%>
 					<img class="card-img-top" src="<c:url value="Fortnite.jpg"/>" alt="Card image cap">
 					<%
+					break;
 				case "League of legends":
 					%>
 					<img class="card-img-top" src="<c:url value="League of legends.jpg"/>" alt="Card image cap">

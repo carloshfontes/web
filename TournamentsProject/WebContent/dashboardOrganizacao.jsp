@@ -103,7 +103,39 @@ campeonatos = campeonatoBO.buscarCampeonatoOrganizacao(organizacao);
 		<div class="row mt-3">
 		<% for(int i = 0; i < campeonatos.size(); i++) { %>
 			<div class="col-4 text-center mb-4">
-				<img class="card-img-top" src="<c:url value="https://i.imgur.com/six4i12.jpg"/>" alt="Card image cap">
+			
+			<%
+				switch(campeonatos.get(i).getJogo()){
+				
+				case "Valorant":
+					%>
+					<img class="card-img-top" src="<c:url value="Valorant.jpg"/>" alt="Card image cap">
+					<%
+					break;
+					
+				case "Counter-Strike":
+					%>
+					<img class="card-img-top" src="<c:url value="Counter-Strike.jpg"/>" alt="Card image cap">
+					<%
+					break;
+					
+				case "Fifa":
+					%>
+					<img class="card-img-top" src="<c:url value="Fifa.jpg"/>" alt="Card image cap">
+					<%
+					break;
+				case "Fortnite":
+					break;
+					%>
+					<img class="card-img-top" src="<c:url value="Fortnite.jpg"/>" alt="Card image cap">
+					<%
+				case "League of legends":
+					%>
+					<img class="card-img-top" src="<c:url value="League of legends.jpg"/>" alt="Card image cap">
+					<%
+					break;
+				}
+			%>
 				<div class="card bg-white rounded p-3">
 					<a
 						href="http://localhost:8080/TournamentsProject/CampeonatoPaginaServlet?id=<%=campeonatos.get(i).getId()%>"><h6><%=campeonatos.get(i).getNome() %></h6></a>

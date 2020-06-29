@@ -17,7 +17,7 @@ public class CampeonatoBO {
 	}
 	
 	public void cadastrarCampeonato(String nome, String jogo, String descricao, Date data, int max_equipes, int idOrganizacao) {
-		CampeonatoBean campeonatoBean = new CampeonatoBean(nome, 1, jogo, descricao, data, max_equipes, idOrganizacao);
+		CampeonatoBean campeonatoBean = new CampeonatoBean(nome, 1, jogo, descricao, data, max_equipes, idOrganizacao, null);
 		campeonatoDAO.cadastrarCampeonato(campeonatoBean);
 	}
 	
@@ -35,5 +35,9 @@ public class CampeonatoBO {
 	
 	public ArrayList<CampeonatoBean> buscarCampeonatoOrganizacao(OrganizacaoBean organizacaoBean) {
 		return this.campeonatoDAO.buscarCampeonatoOrganizacao(organizacaoBean);
+	}
+	
+	public void inserirCampeao(CampeonatoBean campeonato, String campeao) {
+		this.campeonatoDAO.inserirCampeao(campeonato, campeao);
 	}
 }

@@ -11,9 +11,9 @@ public class CampeonatoBean {
 	private Date data;
 	private int max_equipes;
 	private int idOrganizacao;
+	private String campeao;
 
-	public CampeonatoBean(String nome, int id, String jogo, String descricao, Date data, int max_equipes,
-			int idOrganizacao) {
+	public CampeonatoBean(String nome, int id, String jogo, String descricao, Date data, int max_equipes, int idOrganizacao, String campeao) {
 		super();
 		this.nome = nome;
 		this.id = id;
@@ -22,9 +22,10 @@ public class CampeonatoBean {
 		this.data = data;
 		this.max_equipes = max_equipes;
 		this.idOrganizacao = idOrganizacao;
+		this.campeao = campeao;
 	}
 	
-	public CampeonatoBean(String nome, int id, String jogo, String descricao, Date data, int max_equipes) {
+	public CampeonatoBean(String nome, int id, String jogo, String descricao, Date data, int max_equipes, String campeao) {
 		super();
 		this.nome = nome;
 		this.id = id;
@@ -84,7 +85,11 @@ public class CampeonatoBean {
 		this.idOrganizacao = idOrganizacao;
 	}
 
+	public String getCampeao() {
+		return campeao;
+	}
 
-	
-	
+	public void setCampeao(String campeao) {
+		this.campeao = campeao;
+	}
 }

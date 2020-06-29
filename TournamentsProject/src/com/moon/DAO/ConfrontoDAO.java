@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import com.moon.BEAN.CampeonatoBean;
 import com.moon.BEAN.ConfrontoBean;
 import com.moon.BEAN.EquipeBean;
+import com.moon.BO.CampeonatoBO;
 import com.moon.DAO.ConnectionFactory;
 
 public class ConfrontoDAO {
@@ -83,7 +84,6 @@ public class ConfrontoDAO {
 	
 	public ArrayList<ConfrontoBean> buscarCf(CampeonatoBean campeonato) {
 		System.out.println(campeonato);
-//		String sql = "SELECT c.numero_confronto, c.id, c.id_equipe1, c.id_equipe2, c.id_campeao, c.id_campeonato, c.id_rodada, e.nome, e2.nome AS 'nome2' from confronto c, equipe e, equipe e2 where c.id_campeonato ="+campeonato.getId()+" and  e.id = c.id_equipe1 and e2.id = c.id_equipe2 group by e.nome, e2.nome";
 		String sql = "SELECT * FROM confronto WHERE id_campeonato='"+campeonato.getId()+"'";
 		ArrayList<ConfrontoBean> lista = new ArrayList<ConfrontoBean>();
 		
@@ -93,7 +93,6 @@ public class ConfrontoDAO {
 			
 			while(rs.next()) {
 				ConfrontoBean confronto = new ConfrontoBean(rs.getInt("numero_confronto"), rs.getInt("id"), rs.getInt("id_rodada"), rs.getInt("id_equipe1"), rs.getInt("id_equipe2"), rs.getInt("id_campeao"), rs.getInt("id_campeonato"));
-//				ConfrontoBean confronto = new ConfrontoBean(rs.getInt("numero_confronto"), rs.getInt("id"), rs.getInt("id_rodada"), rs.getInt("id_equipe1"), rs.getInt("id_equipe2"), rs.getInt("id_campeao"), rs.getInt("id_campeonato"), rs.getString("nome"), rs.getString("nome2"));
 				lista.add(confronto);
 			}
 			
@@ -111,7 +110,6 @@ public class ConfrontoDAO {
 	public ArrayList<ConfrontoBean> buscaoConfrontos(CampeonatoBean campeonato) {
 		System.out.println(campeonato);
 		String sql = "SELECT c.numero_confronto, c.id, c.id_equipe1, c.id_equipe2, c.id_campeao, c.id_campeonato, c.id_rodada, e.nome, e2.nome AS 'nome2' from confronto c, equipe e, equipe e2 where c.id_campeonato ="+campeonato.getId()+" and  e.id = c.id_equipe1 and e2.id = c.id_equipe2 group by e.nome, e2.nome";
-//		String sql = "SELECT * FROM confronto WHERE id_campeonato='"+campeonato.getId()+"'";
 		ArrayList<ConfrontoBean> lista = new ArrayList<ConfrontoBean>();
 		
 		try {
@@ -198,7 +196,7 @@ public class ConfrontoDAO {
 		}
 	}
 	
-	private void adicionarCampeaoConfronto(ConfrontoBean confronto, EquipeBean equipe) {
+	private void adicionarCampeaoConfronto(ConfrontoBean confronto, EquipeBean equipe, CampeonatoBean campeonato) {
 		
 		String sql = "UPDATE confronto SET id_campeao = "+equipe.getId()+" WHERE id = "+confronto.getId();
 
@@ -210,6 +208,12 @@ public class ConfrontoDAO {
 		}catch (Exception error) {
 			System.out.println("false: "+error);
 		}
+		
+		if(confronto.getId_rodada() == 3) {
+			CampeonatoBO campeonatoBO = new CampeonatoBO();
+			
+			campeonatoBO.inserirCampeao(campeonato, equipe.getNome());
+		}
 	}
 	
 	public void passarRodada(CampeonatoBean campeonato, ConfrontoBean confronto, EquipeBean equipe) {
@@ -217,7 +221,7 @@ public class ConfrontoDAO {
 		int numeroConfronto = 0;
 		ConfrontoBean confrontoVago = null;
 		
-		adicionarCampeaoConfronto(confronto, equipe);
+		adicionarCampeaoConfronto(confronto, equipe, campeonato);
 		
 		if(confronto.getNumero_confronto() == 1 || confronto.getNumero_confronto() == 2) {
 			numeroConfronto = 1;

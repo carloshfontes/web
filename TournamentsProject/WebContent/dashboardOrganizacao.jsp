@@ -103,7 +103,7 @@ campeonatos = campeonatoBO.buscarCampeonatoOrganizacao(organizacao);
 		<div class="row mt-3">
 		<% for(int i = 0; i < campeonatos.size(); i++) { %>
 			<div class="col-4 text-center mb-4">
-				<img class="card-img-top" src="<c:url value="/resources/imagens/bgval.jpg"/>" alt="Card image cap">
+				<img class="card-img-top" src="<c:url value="/resources/imagens/<%=campeonatos.get(i).getJogo()%>.jpg"/>" alt="Card image cap">
 				<div class="card bg-white rounded p-3">
 					<a
 						href="http://localhost:8080/TournamentsProject/CampeonatoPaginaServlet?id=<%=campeonatos.get(i).getId()%>"><h6><%=campeonatos.get(i).getNome() %></h6></a>
@@ -135,8 +135,14 @@ campeonatos = campeonatoBO.buscarCampeonatoOrganizacao(organizacao);
 								type="text" class="form-control" id="nome" name="nome">
 						</div>
 						<div class="form-group">
-							<label for="jogo" class="">Jogo</label> <input type="text"
-								class="form-control" id="jogo" name="jogo">
+							<label for="jogo" class="">Jogo</label> 
+							<select class="selectpicker" id="jogo" name="jogo">
+							  <option value="Counter-Strike">Counter-Strike</option>
+							  <option value="Valorant">Valorant</option>
+							  <option value="Fortnite">Fortnite</option>
+							  <option value="League of Legends">League of Legends</option>
+							  <option value="Fifa">Fifa</option>
+							</select>
 						</div>
 						<div class="form-group">
 							<label for="quantidade" class="">Quantidade de equipes</label> <input

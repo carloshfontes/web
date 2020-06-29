@@ -123,7 +123,7 @@
 						<a
 							href="/TournamentsProject/CampeonatoPaginaServlet?id=<%=campeonatos.get(i).getId()%>">
 							<img class="card-img-top"
-							src="<c:url value="/resources/imagens/bgval.jpg"/>"
+							src="<c:url value="/resources/imagens/<%=campeonatos.get(i).getJogo()%>.jpg"/>"
 							alt="Card image cap">
 							<div class="card card-body cor3">
 								<div class="row mt-2">

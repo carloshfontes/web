@@ -28,7 +28,7 @@ public class CampeonatoDAO {
 	
 	public void cadastrarCampeonato(CampeonatoBean campeonatoBean) {
 		
-		String sql = "INSERT INTO campeonato (nome, jogo, descricao, data, max_equipes, id_organizacao) values (?,?,?,?,?,?)";
+		String sql = "INSERT INTO campeonato (nome, jogo, descricao, data, max_equipes, id_organizacao, campeao) values (?,?,?,?,?,?)";
 
 		try {
 			
@@ -39,6 +39,7 @@ public class CampeonatoDAO {
 			ps.setDate(4, (Date) campeonatoBean.getData());
 			ps.setInt(5, 8);
 			ps.setInt(6, campeonatoBean.getIdOrganizacao());
+			ps.setString(7, campeonatoBean.getCampeao());
 
 			ps.execute();
 			ps.close();
@@ -59,7 +60,7 @@ public class CampeonatoDAO {
 			rs = st.executeQuery(sql);
 			
 			while(rs.next()) {
-				CampeonatoBean campeonato = new CampeonatoBean(rs.getString("nome"), rs.getInt("id"), rs.getString("jogo"), rs.getString("descricao"), rs.getDate("data"), rs.getInt("max_equipes"));
+				CampeonatoBean campeonato = new CampeonatoBean(rs.getString("nome"), rs.getInt("id"), rs.getString("jogo"), rs.getString("descricao"), rs.getDate("data"), rs.getInt("max_equipes"), rs.getString("campeao"));
 				lista.add(campeonato);
 			}
 			
@@ -102,7 +103,7 @@ public class CampeonatoDAO {
             rs = st.executeQuery(sql);
 
             if(rs.next()) {
-            	return new CampeonatoBean(rs.getString("nome"), rs.getInt("id"), rs.getString("jogo"), rs.getString("descricao"), rs.getDate("data"), rs.getInt("max_equipes"));
+            	return new CampeonatoBean(rs.getString("nome"), rs.getInt("id"), rs.getString("jogo"), rs.getString("descricao"), rs.getDate("data"), rs.getInt("max_equipes"), rs.getString("campeao"));
             }
 
             st.close();
@@ -123,7 +124,7 @@ public class CampeonatoDAO {
             rs = st.executeQuery(sql);
 
             while(rs.next()) {
-            	CampeonatoBean campeonatoBean = new CampeonatoBean(rs.getString("nome"), rs.getInt("id"), rs.getString("jogo"), rs.getString("descricao"), rs.getDate("data"), rs.getInt("max_equipes"));
+            	CampeonatoBean campeonatoBean = new CampeonatoBean(rs.getString("nome"), rs.getInt("id"), rs.getString("jogo"), rs.getString("descricao"), rs.getDate("data"), rs.getInt("max_equipes"), rs.getString("campeao"));
             	lista.add(campeonatoBean);
             }
 
@@ -134,5 +135,18 @@ public class CampeonatoDAO {
         }catch (Exception error) {
             return null;
         }
+	}
+	
+	public void inserirCampeao(CampeonatoBean campeonato, String campeao) {
+		String sql = "UPDATE campeonato SET campeao = " + campeao + " WHERE id = " + campeonato.getId();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.execute();
+			ps.close();
+			
+		}catch (Exception error) {
+			System.out.println("false: "+error);
+		}
 	}
 }

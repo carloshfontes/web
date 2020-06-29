@@ -63,6 +63,12 @@
                            
                             <button type="submit" class="btn cor1 font-weight-bold text-uppercase" style="border-radius: 20px;">Entrar</button>
                           </form>
+                          
+                          <div class="row mt-2">
+                            <div class="col-12 text-left">
+                                <a href="/TournamentsProject/cadastrar.jsp"><h6 class="text-light">Clique aqui para cadastrar</h6></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 			</div>

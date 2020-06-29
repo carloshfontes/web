@@ -25,14 +25,13 @@ public class CampeonatoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nome = request.getParameter("nome");
 		String jogo = request.getParameter("jogo");
-		int quantidade = Integer.parseInt(request.getParameter("quantidade"));
 		int idOrganizacao = Integer.parseInt(request.getParameter("organizacao"));
 
 		String descricao = "Campeonato de "+jogo;
 		Date date = new Date(0);
 		
 		CampeonatoBO campeonatoBO = new CampeonatoBO();
-		campeonatoBO.cadastrarCampeonato(nome, jogo, descricao, date, quantidade,idOrganizacao);
+		campeonatoBO.cadastrarCampeonato(nome, jogo, descricao, date, 8,idOrganizacao);
 		response.sendRedirect("dashboardOrganizacao.jsp");
 
 	}

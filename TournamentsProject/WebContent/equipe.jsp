@@ -98,40 +98,40 @@
 		<% for(int i = 0; i < campeonatos.size(); i++) { %>
 			<div class="col-4 text-center mb-4">
 			<%
-				switch(campeonatos.get(i).getJogo()){
-				
-				case "Valorant":
-					%>
-					<img class="card-img-top" src="<c:url value="Valorant.jpg"/>" alt="Card image cap">
-					<%
-					break;
-					
-				case "Counter-Strike":
-					%>
-					<img class="card-img-top" src="<c:url value="Counter-Strike.jpg"/>" alt="Card image cap">
-					<%
-					break;
-					
-				case "Fifa":
-					%>
-					<img class="card-img-top" src="<c:url value="Fifa.jpg"/>" alt="Card image cap">
-					<%
-					break;
-				case "Fortnite":
-					%>
-					<img class="card-img-top" src="<c:url value="Fortnite.jpg"/>" alt="Card image cap">
-					<%
-					break;
-				case "League of legends":
-					%>
-					<img class="card-img-top" src="<c:url value="League of legends.jpg"/>" alt="Card image cap">
-					<%
-					break;
-				}
-			%>
-				<div class="card bg-white rounded p-3">
+								switch(campeonatos.get(i).getJogo()){
+								
+								case "Valorant":
+									%>
+									<img class="card-img-top" src="<c:url value="/resources/imagens/Valorant.jpg"/>" alt="Card image cap">
+									<%
+									break;
+									
+								case "Counter-Strike":
+									%>
+									<img class="card-img-top" src="<c:url value="/resources/imagens/Counter-Strike.jpg"/>" alt="Card image cap">
+									<%
+									break;
+									
+								case "Fifa":
+									%>
+									<img class="card-img-top" src="<c:url value="/resources/imagens/Fifa.jpg"/>" alt="Card image cap">
+									<%
+									break;
+								case "Fortnite":
+									%>
+									<img class="card-img-top" src="<c:url value="/resources/imagens/Fortnite.jpg"/>" alt="Card image cap">
+									<%
+									break;
+								case "League of Legends":
+									%>
+									<img class="card-img-top" src="<c:url value="/resources/imagens/League of Legends.jpg"/>" alt="Card image cap">
+									<%
+									break;
+								}
+							%>
+				<div class="card cor3 rounded p-3">
 					<a
-						href="http://localhost:8080/TournamentsProject/CampeonatoPaginaServlet?id=<%=campeonatos.get(i).getId()%>"><h6><%=campeonatos.get(i).getNome() %></h6></a>
+						href="http://localhost:8080/TournamentsProject/CampeonatoPaginaServlet?id=<%=campeonatos.get(i).getId()%>"><h6 class="text-light text-uppercase"><%=campeonatos.get(i).getNome()%></h6></a>
 				</div>
 			</div>
 		<% } %>

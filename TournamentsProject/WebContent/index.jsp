@@ -128,29 +128,29 @@
 								
 								case "Valorant":
 									%>
-									<img class="card-img-top" src="<c:url value="Valorant.jpg"/>" alt="Card image cap">
+									<img class="card-img-top" src="<c:url value="/resources/imagens/Valorant.jpg"/>" alt="Card image cap">
 									<%
 									break;
 									
 								case "Counter-Strike":
 									%>
-									<img class="card-img-top" src="<c:url value="Counter-Strike.jpg"/>" alt="Card image cap">
+									<img class="card-img-top" src="<c:url value="/resources/imagens/Counter-Strike.jpg"/>" alt="Card image cap">
 									<%
 									break;
 									
 								case "Fifa":
 									%>
-									<img class="card-img-top" src="<c:url value="Fifa.jpg"/>" alt="Card image cap">
+									<img class="card-img-top" src="<c:url value="/resources/imagens/Fifa.jpg"/>" alt="Card image cap">
 									<%
 									break;
 								case "Fortnite":
 									%>
-									<img class="card-img-top" src="<c:url value="Fortnite.jpg"/>" alt="Card image cap">
+									<img class="card-img-top" src="<c:url value="/resources/imagens/Fortnite.jpg"/>" alt="Card image cap">
 									<%
 									break;
-								case "League of legends":
+								case "League of Legends":
 									%>
-									<img class="card-img-top" src="<c:url value="League of legends.jpg"/>" alt="Card image cap">
+									<img class="card-img-top" src="<c:url value="/resources/imagens/League of Legends.jpg"/>" alt="Card image cap">
 									<%
 									break;
 								}

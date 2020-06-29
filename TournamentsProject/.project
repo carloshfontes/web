@@ -30,9 +30,14 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>WebContent/resources/imagens/Valorant.jpg</name>
+			<name>WebContent/resources/imagens/ Valorant.jpg</name>
 			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/Desktop/Valorant.jpg</locationURI>
+			<locationURI>PARENT-3-PROJECT_LOC/Desktop/%20Valorant.jpg</locationURI>
+		</link>
+		<link>
+			<name>WebContent/resources/imagens/Counter-Strike.jpg</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Desktop/Counter-Strike.jpg</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

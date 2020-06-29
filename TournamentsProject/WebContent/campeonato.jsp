@@ -185,7 +185,7 @@
 								</div>
 							</div>
 					
-						<% if (organizacao != null) { %>>
+						<% if (organizacao != null) { %>
 							<div class="row">
 								<div class="col-6">
 									<a
@@ -233,7 +233,7 @@
 								</div>
 							</div>
 
-						<% if (organizacao != null) { %>>
+						<% if (organizacao != null) { %>
 							<div class="row">
 								<div class="col-6">
 									<a
@@ -281,7 +281,7 @@
 								</div>
 							</div>
 
-						<% if (organizacao != null) { %>>
+						<% if (organizacao != null) { %>
 							<div class="row">
 								<div class="col-6">
 									<a

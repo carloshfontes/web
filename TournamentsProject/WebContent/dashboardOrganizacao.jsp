@@ -103,7 +103,7 @@ campeonatos = campeonatoBO.buscarCampeonatoOrganizacao(organizacao);
 		<div class="row mt-3">
 		<% for(int i = 0; i < campeonatos.size(); i++) { %>
 			<div class="col-4 text-center mb-4">
-				<img class="card-img-top" src="<c:url value="/resources/imagens/<%=campeonatos.get(i).getJogo()%>.jpg"/>" alt="Card image cap">
+				<img class="card-img-top" src="<c:url value="https://i.imgur.com/six4i12.jpg"/>" alt="Card image cap">
 				<div class="card bg-white rounded p-3">
 					<a
 						href="http://localhost:8080/TournamentsProject/CampeonatoPaginaServlet?id=<%=campeonatos.get(i).getId()%>"><h6><%=campeonatos.get(i).getNome() %></h6></a>

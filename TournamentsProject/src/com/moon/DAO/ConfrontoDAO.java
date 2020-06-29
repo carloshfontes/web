@@ -220,7 +220,7 @@ public class ConfrontoDAO {
 		
 		int numeroConfronto = 0;
 		ConfrontoBean confrontoVago = null;
-		
+		System.out.println("ID rodada: "+confronto.getId_rodada());
 		adicionarCampeaoConfronto(confronto, equipe, campeonato);
 		
 		if(confronto.getId_rodada() == 3) {

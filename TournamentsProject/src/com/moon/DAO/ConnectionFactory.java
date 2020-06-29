@@ -19,5 +19,6 @@ public class ConnectionFactory {
 			throw new RuntimeException("Erro na conexão com banco de dados: "+error);
 		}
 	}
+	
 
 }

@@ -46,7 +46,7 @@
 		<div class="row">
 			<div class="col-12">
 				<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
-					<a class="navbar-brand navbar-nav mr-auto" href="/"> <img
+					<a class="navbar-brand navbar-nav mr-auto" href="/TournamentsProject"> <img
 						src="<c:url value="/resources/imagens/08.png"/>" width="150"
 						class="d-inline-block align-top">
 					</a>

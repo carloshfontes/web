@@ -28,7 +28,7 @@ public class CampeonatoDAO {
 	
 	public void cadastrarCampeonato(CampeonatoBean campeonatoBean) {
 		
-		String sql = "INSERT INTO campeonato (nome, jogo, descricao, data, max_equipes, id_organizacao, campeao) values (?,?,?,?,?,?)";
+		String sql = "INSERT INTO campeonato (nome, jogo, descricao, data, max_equipes, id_organizacao, campeao) values (?,?,?,?,?,?,?)";
 
 		try {
 			

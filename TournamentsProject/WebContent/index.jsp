@@ -123,9 +123,38 @@
 					<div class="col-12 col-md-4 mb-3">
 						<a
 							href="/TournamentsProject/CampeonatoPaginaServlet?id=<%=campeonatos.get(i).getId()%>">
-							<img class="card-img-top"
-							src="<c:url value="/resources/imagens/<%=campeonatos.get(i).getJogo()%>.jpg"/>"
-							alt="Card image cap">
+							<%
+								switch(campeonatos.get(i).getJogo()){
+								
+								case "Valorant":
+									%>
+									<img class="card-img-top" src="<c:url value="Valorant.jpg"/>" alt="Card image cap">
+									<%
+									break;
+									
+								case "Counter-Strike":
+									%>
+									<img class="card-img-top" src="<c:url value="Counter-Strike.jpg"/>" alt="Card image cap">
+									<%
+									break;
+									
+								case "Fifa":
+									%>
+									<img class="card-img-top" src="<c:url value="Fifa.jpg"/>" alt="Card image cap">
+									<%
+									break;
+								case "Fortnite":
+									break;
+									%>
+									<img class="card-img-top" src="<c:url value="Fortnite.jpg"/>" alt="Card image cap">
+									<%
+								case "League of legends":
+									%>
+									<img class="card-img-top" src="<c:url value="League of legends.jpg"/>" alt="Card image cap">
+									<%
+									break;
+								}
+							%>
 							<div class="card card-body cor3">
 								<div class="row mt-2">
 									<div class="col-12">

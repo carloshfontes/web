@@ -208,12 +208,6 @@ public class ConfrontoDAO {
 		}catch (Exception error) {
 			System.out.println("false: "+error);
 		}
-		
-		if(confronto.getId_rodada() == 3) {
-			CampeonatoBO campeonatoBO = new CampeonatoBO();
-			
-			campeonatoBO.inserirCampeao(campeonato, equipe.getNome());
-		}
 	}
 	
 	public void passarRodada(CampeonatoBean campeonato, ConfrontoBean confronto, EquipeBean equipe) {
@@ -224,6 +218,9 @@ public class ConfrontoDAO {
 		adicionarCampeaoConfronto(confronto, equipe, campeonato);
 		
 		if(confronto.getId_rodada() == 3) {
+			CampeonatoBO campeonatoBO = new CampeonatoBO();
+			campeonatoBO.inserirCampeao(campeonato, equipe.getNome());
+			
 			return;
 		}
 		

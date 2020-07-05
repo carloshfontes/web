@@ -29,6 +29,8 @@ public class CampeonatoPaginaServlet extends HttpServlet {
 		String redirect = "index.jsp";
 
 		CampeonatoBean campeonatoBean = campeonatoBO.buscarCampeonato(idCampeonato);
+		System.out.println(campeonatoBean.getCampeao());
+		System.out.println(campeonatoBean);
 		if (campeonatoBean != null) {
 			redirect = "campeonato.jsp";
 			request.setAttribute("campeonato", campeonatoBean);

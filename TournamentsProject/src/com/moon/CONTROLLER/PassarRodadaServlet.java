@@ -27,10 +27,12 @@ public class PassarRodadaServlet extends HttpServlet {
 		int idConfronto = Integer.parseInt(req.getParameter("confronto"));
 		int idCampeonato = Integer.parseInt(req.getParameter("campeonato"));
 		int numConfronto = Integer.parseInt(req.getParameter("numConfronto"));
+		String nome = req.getParameter("nomeEquipe");
+
 		
 		CampeonatoBean campeonatoBean = new CampeonatoBean(idCampeonato);
 		ConfrontoBean confrontoBean = new ConfrontoBean(idConfronto, idRodada, numConfronto);
-		EquipeBean equipeBean = new EquipeBean(idCampeao);
+		EquipeBean equipeBean = new EquipeBean(idCampeao, nome);
 		
 		ConfrontoBO confrontoBO = new ConfrontoBO();
 		confrontoBO.passarRodada(campeonatoBean, confrontoBean, equipeBean);

@@ -40,11 +40,11 @@
                         <form class="mt-3" action="LoginServlet" method="POST">
                             <div class="form-group">
                                 <label for="usuario" class="text-light">Usuário</label>
-                                <input type="text" class="form-control" id="usuario" name="usuario">
+                                <input type="text" class="form-control" id="usuario" name="usuario" pattern="(.){2,20}" maxlength="20" required>
                               </div>
                             <div class="form-group">
                               <label for="senha" class="text-light">Senha</label>
-                              <input type="password" class="form-control" id="senha" name="senha">
+                              <input type="password" class="form-control" id="senha" name="senha" pattern="(.){2,20}" maxlength="20" required>
                             </div>
 
                             <div class="form-check mb-2">

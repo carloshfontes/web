@@ -33,6 +33,7 @@ public class CampeonatoBean {
 		this.descricao = descricao;
 		this.data = data;
 		this.max_equipes = max_equipes;
+		this.setCampeao(campeao);
 	}
 	
 	public CampeonatoBean(int id) {

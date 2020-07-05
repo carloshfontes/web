@@ -164,7 +164,7 @@ campeonatos = campeonatoBO.buscarCampeonatoOrganizacao(organizacao);
 					<form class="mt-3" action="CampeonatoServlet" method="POST">
 						<div class="form-group">
 							<label for="nome" class="">Nome do campeonato</label> <input
-								type="text" class="form-control" id="nome" name="nome">
+								type="text" class="form-control" id="nome" name="nome" pattern="(.){2,20}" maxlength="20">
 						</div>
 						<div class="form-group">
 							<label for="jogo" class="">Jogo</label> 

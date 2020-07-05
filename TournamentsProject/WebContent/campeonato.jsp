@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page errorPage="paginaDeErro.jsp" %>
-	
+<%@ page errorPage="paginaDeErro.jsp"%>
+
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="com.moon.BEAN.CampeonatoBean"%>
@@ -35,18 +35,17 @@
 		HttpSession s = request.getSession();
 	EquipeBean equipe = (EquipeBean) s.getAttribute("equipe");
 	OrganizacaoBean organizacao = (OrganizacaoBean) s.getAttribute("organizacao");
-	
+
 	CampeonatoBean campeonatoBean = (CampeonatoBean) request.getAttribute("campeonato");
 	EquipeBO equipeBO = new EquipeBO();
-	
-		
 	%>
 
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
 				<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
-					<a class="navbar-brand navbar-nav mr-auto" href="/TournamentsProject"> <img
+					<a class="navbar-brand navbar-nav mr-auto"
+						href="/TournamentsProject"> <img
 						src="<c:url value="/resources/imagens/08.png"/>" width="150"
 						class="d-inline-block align-top">
 					</a>
@@ -62,8 +61,8 @@
 									<i class="fab fa-facebook-f"></i> Facebook <span
 									class="sr-only">(current)</span>
 							</a></li>
-							<li class="nav-item"><a class="nav-link text-light" href="#"> <i
-									class="fab fa-instagram"></i> Instagram 
+							<li class="nav-item"><a class="nav-link text-light" href="#">
+									<i class="fab fa-instagram"></i> Instagram
 							</a></li>
 
 							<%
@@ -77,27 +76,32 @@
 								} else if (equipe != null) {
 							%>
 							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle text-light" id="navbarDropdownMenuLink-4"
-								data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false"> <i class="fas fa-user"></i> <%=equipe.getNome()%>
+								class="nav-link dropdown-toggle text-light"
+								id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false"> <i
+									class="fas fa-user"></i> <%=equipe.getNome()%>
 							</a>
 								<div class="dropdown-menu dropdown-menu-right dropdown-info"
 									aria-labelledby="navbarDropdownMenuLink-4">
-									<a class="dropdown-item" href="/TournamentsProject/equipe.jsp">Minha conta</a> <a
-										class="dropdown-item" href="/TournamentsProject/Logout">Sair</a>
+									<a class="dropdown-item" href="/TournamentsProject/equipe.jsp">Minha
+										conta</a> <a class="dropdown-item"
+										href="/TournamentsProject/Logout">Sair</a>
 								</div></li>
 							<%
 								} else if (organizacao != null) {
 							%>
 							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle text-light" id="navbarDropdownMenuLink-4"
-								data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false"> <i class="fas fa-user"></i> <%=organizacao.getNome()%>
+								class="nav-link dropdown-toggle text-light"
+								id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false"> <i
+									class="fas fa-user"></i> <%=organizacao.getNome()%>
 							</a>
 								<div class="dropdown-menu dropdown-menu-right dropdown-info"
 									aria-labelledby="navbarDropdownMenuLink-4">
-									<a class="dropdown-item" href="/TournamentsProject/dashboardOrganizacao.jsp">Minha conta</a> <a
-										class="dropdown-item" href="/TournamentsProject/Logout">Sair</a>
+									<a class="dropdown-item"
+										href="/TournamentsProject/dashboardOrganizacao.jsp">Minha
+										conta</a> <a class="dropdown-item"
+										href="/TournamentsProject/Logout">Sair</a>
 								</div></li>
 							<%
 								}
@@ -128,25 +132,25 @@
 									<div class="col-12">
 										<input type="text" class="form-control"
 											value="<%=campeonatoBean.getId()%>" name="campeonato"
-											id="campeonato">
+											id="campeonato" required>
 									</div>
 								</div>
 
 								<div class="form-row d-none">
 									<div class="col-12">
 										<input type="text" class="form-control"
-											value="<%=equipe.getId()%>" name="equipe" id="equipe">
+											value="<%=equipe.getId()%>" name="equipe" id="equipe" required>
 									</div>
 								</div>
-								
-								
+
+
 								<div class="form-row">
 									<div class="col-12 text-right">
 										<button type="submit" class="btn btn-primary">Me
 											inscrever</button>
 									</div>
 								</div>
-								
+
 							</form>
 
 						</div>
@@ -174,32 +178,32 @@
 					<div class="col-3">
 						<div class="card rounded p-3 bg-light">
 							<div class="row">
-								<div class="col-12">
-									${confronto.getEquipe1()}
-								</div>
+								<div class="col-12">${confronto.getEquipe1()}</div>
 							</div>
 
 							<div class="row">
-								<div class="col-12">
-								${confronto.getEquipe2()}
-								</div>
+								<div class="col-12">${confronto.getEquipe2()}</div>
 							</div>
-					
-						<% if (organizacao != null) { %>
+
+							<%
+								if (organizacao != null) {
+							%>
 							<div class="row">
 								<div class="col-6">
 									<a
-										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}"><button
+										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}&nomeEquipe=${confronto.getEquipe1()}"><button
 											class="btn btn-primary btn-sm">${confronto.getEquipe1()}</button></a>
 								</div>
 
 								<div class="col-6">
 									<a
-										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}"><button
+										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}&nomeEquipe=${confronto.getEquipe2()}"><button
 											class="btn btn-primary btn-sm">${confronto.getEquipe2()}</button></a>
 								</div>
 							</div>
-						<% } %>
+							<%
+								}
+							%>
 						</div>
 					</div>
 				</c:if>
@@ -222,32 +226,32 @@
 					<div class="col-3">
 						<div class="card rounded p-3 bg-light">
 							<div class="row">
-								<div class="col-12">
-									${confronto.getEquipe1()}
-								</div>
+								<div class="col-12">${confronto.getEquipe1()}</div>
 							</div>
 
 							<div class="row">
-								<div class="col-12">
-								${confronto.getEquipe2()}
-								</div>
+								<div class="col-12">${confronto.getEquipe2()}</div>
 							</div>
 
-						<% if (organizacao != null) { %>
+							<%
+								if (organizacao != null) {
+							%>
 							<div class="row">
 								<div class="col-6">
 									<a
-										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}"><button
+										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}&nomeEquipe=${confronto.getEquipe1()}"><button
 											class="btn btn-primary btn-sm">${confronto.getEquipe1()}</button></a>
 								</div>
 
 								<div class="col-6">
 									<a
-										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}"><button
+										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}&nomeEquipe=${confronto.getEquipe2()}"><button
 											class="btn btn-primary btn-sm">${confronto.getEquipe2()}</button></a>
 								</div>
 							</div>
-						<% } %>
+							<%
+								}
+							%>
 						</div>
 					</div>
 				</c:if>
@@ -270,32 +274,32 @@
 					<div class="col-3">
 						<div class="card rounded p-3 bg-light">
 							<div class="row">
-								<div class="col-12">
-									${confronto.getEquipe1()}
-								</div>
+								<div class="col-12">${confronto.getEquipe1()}</div>
 							</div>
 
 							<div class="row">
-								<div class="col-12">
-								${confronto.getEquipe2()}
-								</div>
+								<div class="col-12">${confronto.getEquipe2()}</div>
 							</div>
 
-						<% if (organizacao != null) { %>
+							<%
+								if (organizacao != null) {
+							%>
 							<div class="row">
 								<div class="col-6">
 									<a
-										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}"><button
+										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}&nomeEquipe=${confronto.getEquipe1()}"><button
 											class="btn btn-primary btn-sm">${confronto.getEquipe1()}</button></a>
 								</div>
 
 								<div class="col-6">
 									<a
-										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}"><button
+										href="/TournamentsProject/PassarRodadaServlet?rodada=${confronto.getId_rodada()}&confronto=${confronto.getId()}&campeao=${confronto.getId_equipe1()}&campeonato=<%=campeonatoBean.getId()%>&numConfronto=${confronto.getNumero_confronto()}&nomeEquipe=${confronto.getEquipe2()}"><button
 											class="btn btn-primary btn-sm">${confronto.getEquipe2()}</button></a>
 								</div>
 							</div>
-						<% } %>
+							<%
+								}
+							%>
 
 						</div>
 					</div>
@@ -303,6 +307,31 @@
 			</c:forEach>
 		</div>
 	</div>
+
+	<% if (campeonatoBean.getCampeao() != null) { %>
+	<div class="container">
+		<div class="row">
+			<div class="col-2">
+				<div class="card bg-light p-2 mt-5 text-left">
+					<h3>Campeão</h3>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-3">
+
+			<div class="col-3">
+				<div class="card rounded p-3 bg-light">
+					<div class="row">
+						<div class="col-12"><%=campeonatoBean.getCampeao()%></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<% } %>
+
 
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

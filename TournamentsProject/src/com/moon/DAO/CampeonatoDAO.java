@@ -138,7 +138,8 @@ public class CampeonatoDAO {
 	}
 	
 	public void inserirCampeao(CampeonatoBean campeonato, String campeao) {
-		String sql = "UPDATE campeonato SET campeao = " + campeao + " WHERE id = " + campeonato.getId();
+		System.out.println("nome: "+campeao);
+		String sql = "UPDATE campeonato SET campeao = '" + campeao + "' WHERE id = " + campeonato.getId();
 		
 		try {
 			ps = conn.prepareStatement(sql);

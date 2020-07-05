@@ -20,6 +20,12 @@ public class EquipeBean {
 		this.setId(id);
 	}
 	
+	public EquipeBean(int id, String nome) {
+		super();
+		this.setId(id);
+		this.setNome(nome);
+	}
+	
 	public String getNome() {
 		return nome;
 	}
